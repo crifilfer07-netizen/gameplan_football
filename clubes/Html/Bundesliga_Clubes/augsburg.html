@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>Augsburg</title>
+    <style>
+        body {
+            background-color:#BA3733;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: white;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color:white;
+        }
+
+        .header .logo-placeholder {
+            width: 100%;
+            height: 1px;
+        }
+
+        hr.black-separator {
+            border: none;
+            height: 6px;
+            background-color:white;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: black;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color:white;
+            padding: 20px;
+            border-radius: 10px;
+            color:black;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid white;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.black-separator {
+                grid-column: 1;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>Udinese</h1>
+        <hr class="black-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Udinese.png" >
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador:  <a href="https://www.zerozero.pt/treinador/kosta-runjaic/4500?search=1" target="_blank"> 
+Kosta Runjaić</strong></p></a>
+            <p class="texto-justificado">Kosta Runjaić é o atual treinador principal da Udinese Calcio, assumindo o comando técnico da equipa desde o verão de 2024. Nascido na Áustria mas com nacionalidade alemã, o técnico tem-se destacado na elite do futebol italiano pela sua abordagem tática moderna e liderança pragmática. </p>
+
+            <img src="../png/kosta_runjic.png" alt="Treinador">
+
+            <p><strong>Estádio: Bluernegy</strong></p>
+            <p class="texto-justificado">O Estádio Bluenergy , historicamente conhecido como Estádio Friuli, é a casa oficial da Udinese em Udine, Itália, destacando-se como um dos recintos mais modernos, ecológicos e inovadores do futebol europeu. </p>
+
+            <img src="../png/bluernergy.jpeg" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">A Udinese de Kosta Runjaić pratica um futebol direto, rápido e defensivamente sólido, focado na alta intensidade e no forte jogo aéreo, preferindo o pragmatismo ofensivo ao domínio da posse de bola.</p>
+
+            <p>"La passione è la nostra forza!"</p>
+        </div>
+    </div>
+
+</body>
