@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>FC Arouca</title>
+    <style>
+        body {
+            background-color: #FDE100;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: #0055A4;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color: #0055A4; 
+        }
+
+        .header .logo-placeholder {
+            width: 100%;
+            height: 1px;
+        }
+
+        hr.black-separator {
+            border: none;
+            height: 6px;
+            background-color: black;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: #FDE100;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #FDE100;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            background-color: #0055A4;
+            padding: 20px;
+            border-radius: 10px;
+            color: #FDE100;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid #0055A4;
+            margin-top: 10px;
+        }
+
+        
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.black-separator {
+                grid-column: 1;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>FC Arouca</h1>
+        <hr class="black-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Arouca.png" alt="Logo FC Arouca">
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador: <a href="https://www.zerozero.pt/treinador/vasco-seabra/15841?search=1" target="_blank"> Vasco Seabra</p></a></strong>
+
+            <p class="texto-justificado">Vasco Seabra é um treinador de futebol português conhecido pela sua ascensão rápida dos escalões amadores até à Primeira Liga. A sua carreira tem sido marcada pela capacidade de estabilizar equipas e por passagens por vários clubes de diferentes dimensões em Portugal. Atualmente, é o treinador do FC Arouca. </p>
+
+            <img src="../png/vasco-seabra.png" alt="Treinador Vasco Seabra">
+
+            <p><strong>Estádio: Municipal de Arouca</p></strong>
+            <p class="texto-justificado">O Estádio Municipal de Arouca é um recinto moderno e acolhedor, muito ligado à comunidade local e palco de momentos importantes na história recente do clube.</p>
+
+            <img src="../png/estadio_municipal_de_arouca.jpg" alt="Estádio Municipal de Arouca">
+
+            <p><strong>Estilo de Jogo:</p></strong>
+            <p class="texto-justificado">Vasco Seabra implementa no FC Arouca um estilo de jogo baseado no domínio territorial e controlo do jogo, adaptando a tática consoante o adversário.</p>
+
+            <p>"Amor e Paixão!"</p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>Barcelona</title>
+    <style>
+        body {
+            background-color: #004D98;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color:#A50044;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color: #FFCD00;
+        }
+
+        .header .logo-placeholder {
+
+            width: 100%;
+            height: 1px;
+        }
+
+        .hr .white-separator {
+            border: none;
+            height: 6px;
+            background-color: #004D98;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 10px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+           a {
+            color: #FFCD00;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #FFCD00;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color: #A50044;
+            padding: 20px;
+            border-radius: 10px;
+            color: #FFCD00;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid #A50044;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        /* Responsividade simples */
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.white-separator {
+                grid-column: 2;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>Barcelona</h1>
+        <hr class="white-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Barcelona.png" >
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador: <a href="https://www.zerozero.pt/treinador/hans-dieter-flick/685" target="_blank">Hans Flick</a></strong></p>
+            <p class="texto-justificado">Hansi Flick é um treinador alemão nascido em Heidelberg, reconhecido pela sua gestão de grupo pragmática e pela capacidade de restaurar a competitividade máxima em plantéis de elite. Após uma carreira histórica como adjunto e selecionador da Alemanha, atingiu o auge mundial no Bayern de Munique, consolidando-se como um dos técnicos mais titulados da atualidade antes de abraçar o desafio de liderar o projeto desportivo do FC Barcelona.</p>
+
+            <img src="../png/hansi_flik.webp" alt="Treinador">
+
+            <p><strong>Estádio: Spotify Camp Nou</strong></p>
+            <p class="texto-justificado">O FC Barcelona joga no Spotify Camp Nou, um estádio lendário e monumental que, após a sua remodelação profunda, se tornou na joia da coroa do desporto mundial. Situado no bairro de Les Corts, o novo recinto combina uma estrutura de vanguardismo tecnológico com uma capacidade expandida para cerca de 105 mil lugares, mantendo-se como o maior e mais imponente estádio da Europa.</p>
+
+            <img src="../png/spotify_campnou.webp" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">O estilo de jogo de Hansi Flick no FC Barcelona em 2026 consolidou-se como uma evolução vertical do tradicional DNA Barça, priorizando a intensidade física e a objetividade em vez da posse de bola meramente contemplativa.</p>
+
+            <p>"Més que un club!"</p>
+        </div>
+    </div>
+
+</body>
+</html>

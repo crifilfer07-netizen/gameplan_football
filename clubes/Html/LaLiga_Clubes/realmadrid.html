@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>Real Madrid</title>
+    <style>
+        body {
+            background-color:white;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: #00529F;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color: #00529F;
+        }
+
+        .header .logo-placeholder {
+
+            width: 100%;
+            height: 1px;
+        }
+
+        .hr .white-separator {
+            border: none;
+            height: 6px;
+            background-color: black;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 10px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+           a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color: #00529F;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid #00529F;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        /* Responsividade simples */
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.white-separator {
+                grid-column: 2;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>Real Madrid</h1>
+        <hr class="white-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Real Madrid.png" alt="Logo AFC Bournemouth">
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador: <a href="https://www.zerozero.pt/treinador/alvaro-arbeloa/53696?search=1" target="_blank">Álvaro Arbeloa</a></strong></p>
+            <p class="texto-justificado">Álvaro Arbeloa é um ex-futebolista e atual treinador espanhol, amplamente reconhecido como uma figura histórica do Real Madrid e da Seleção Espanhola. Atualmente, Arbeloa ocupa o cargo de treinador da equipa principal do Real Madrid, tendo assumido o posto em janeiro de 2026 após a saída de Xabi Alonso. </p>
+
+            <img src="../png/alvaro_arbeloa.png" alt="Treinador">
+
+            <p><strong>Estádio: Bernabéu</strong></p>
+            <p class="texto-justificado">O Estádio Bernabéu é um recinto desportivo espanhol localizado em Madrid, conhecido pela sua atmosfera imperial, tecnológica e avassaladora. Destacou-se pela sua transformação revolucionária, incluindo a nova fachada envolvente e o relvado retrátil, antes de se consolidar como o epicentro mundial</p>
+
+            <img src="../png/bernabéu.webp" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">No Real Madrid, o treinador Álvaro Arbeloa implementou um estilo de jogo focado no protagonismo, na intensidade extrema e no Gegenpressing.</p>
+
+            <p>"Hala Madrid y nada más!"</p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ligue 1</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color:b;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #000032;
+            color: black;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 15px 0 25px 0;
+        }
+        
+        .nav-btn {
+            background-color: linear-gradient #000032;
+            color: white;
+            border: 1px solid white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.25s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nav-btn:hover {
+            background-color: #000032;
+            transform: translateY(-2px);
+            box-shadow: #000032;
+        }
+        
+        .nav-btn.active {
+            background-color: #000032;
+            border-color: white;
+        }
+        
+        
+        .clubs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .club-card {
+            background-color:#000032;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px #000032;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .club-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .club-logo {
+            max-width: 100%;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        
+        .club-name {
+            font-weight: bold;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .clubs-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .clubs-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 15px;
+            }
+            
+            .club-logo {
+                height: 100px;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+             <img src="../png/.ligue1.png" alt="Liga Francesa" class="club-logo">
+
+            <div class="nav-buttons">
+                <a href="../main.html" class="nav-btn">Página Principal</a>
+                <a href="../6-ligas/ligaportugal.html" class="nav-btn">Liga Portugal</a>
+                <a href="../6-ligas/premier.html" class="nav-btn">Premier League</a>
+                <a href="../6-ligas/laliga.html" class="nav-btn">La Liga</a>
+                <a href="../6-ligas/seriA.html" class="nav-btn">Serie A</a>
+                <a href="../6-ligas/bundesliga.html" class="nav-btn">Bundesliga</a>
+            </div>
+        </header>
+            
+        </header>
+        <div class="clubs-grid">
+
+                <a href="../Ligue1_Clubes/angers.html" class="club-card">
+                    <img src="../png/Angers.png" alt="Angers" class="club-logo">
+                    <div class="club-name">Angers SCO</div>
+                </a>
+        
+        
+                <a href="../Ligue1_Clubes/auxerre.html" class="club-card">
+                    <img src="../png/Auxerre.png" alt="Auxerre" class="club-logo">
+                    <div class="club-name">Auxerre</div>
+                </a>
+            
+                <a href="../Ligue1_Clubes/brest.html" class="club-card">
+                    <img src="../png/Brest.png" alt="Brest" class="club-logo">
+                    <div class="club-name">Brest</div>
+                </a>
+            
+                <a href="../Ligue1_Clubes/estrasburgo.html" class="club-card">
+                    <img src="../png/Estrasburgo.png" alt="Estrasburgo" class="club-logo">
+                    <div class="club-name">Estrasburgo</div>
+                </a>
+            
+                <a href="../Ligue1_Clubes/lehavre.html" class="club-card">
+                    <img src="../png/Le Havre.png" alt="Le Havre" class="club-logo">
+                    <div class="club-name">Le Havre</div>
+                </a>
+            
+                <a href="../Ligue1_Clubes/lens.html" class="club-card">
+                    <img src="../png/Lens.png" alt="Lens" class="club-logo">
+                    <div class="club-name">Lens</div>
+                </a>
+            
+                <a href="../Ligue1_Clubes/lille.html" class="club-card">
+                    <img src="../png/Lille.png" alt="Lille" class="club-logo">
+                    <div class="club-name">Lille</div>
+                </a>
+            
+                <a href="../Ligue1_Clubes/lorient.html" class="club-card">
+                    <img src="../png/Lorient.png" alt="Lorient" class="club-logo">
+                    <div class="club-name">Lorient</div>
+                </a>
+            
+                <a href="../Ligue1_Clubes/lyon.html" class="club-card">
+                    <img src="../png/Lyon.png" alt="Lyon" class="club-logo">
+                    <div class="club-name">Lyon</div>
+                </a>
+            
+                <a href="../Ligue1_Clubes/marsellha.html" class="club-card">
+                    <img src="../png/Marselha.png" alt="Marselha" class="club-logo">
+                    <div class="club-name">Marselha</div>
+                </a>
+            
+                <a href="../Ligue1_Clubes/metz.html" class="club-card">
+                    <img src="../png/Metz1.png" alt="Metz" class="club-logo">
+                    <div class="club-name">Metz</div>
+                </a>
+            
+                <a href="../Ligue1_Clubes/monaco.html" class="club-card">
+                    <img src="../png/Mónaco.png" alt="Monaco" class="club-logo">
+                    <div class="club-name">Mónaco</div>
+                </a>
+            
+                <a href="../Ligue1_Clubes/nantes.html" class="club-card">
+                    <img src="../png/Nantes.png" alt="Nantes" class="club-logo">
+                    <div class="club-name">Nantes</div>
+                </a>
+
+                <a href="../Ligue1_Clubes/nice.html" class="club-card">
+                    <img src="../png/Nice.png" alt="Nice" class="club-logo">
+                    <div class="club-name">OGC Nice</div>
+                </a>
+            
+                <a href="../Ligue1_Clubes/parisfc.html" class="club-card">
+                    <img src="../png/Paris FC.png" alt="Paris FC" class="club-logo">
+                    <div class="club-name">Paris FC</div>
+                </a>
+            
+                <a href="../Ligue1_Clubes/psg.html" class="club-card">
+                    <img src="../png/Paris Saint-Germain.png" alt="PSG" class="club-logo">
+                    <div class="club-name">Paris Saint-Germain</div>
+                </a>
+            
+                <a href="../Ligue1_Clubes/rennais.html" class="club-card">
+                    <img src="../png/Rennais.png" alt="Rennais" class="club-logo">
+                    <div class="club-name">Stade Rennais</div>
+                </a>
+            
+                <a href="../Ligue1_Clubes/toulouse.html" class="club-card">
+                    <img src="../png/Toulouse.png" alt="Toulouse" class="club-logo">
+                    <div class="club-name">Toulouse</div>
+                </a>
+            </div>            
+        </div>
+        
+        <footer>
+            <p>© 2026 Clubes Franceses - Todos os direitos reservados</p>
+        </footer>
+    </div>
+</body>
+</html>

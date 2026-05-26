@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premier League</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color:white;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(to right, purple, purple);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 15px 0 25px 0;
+        }
+        
+        .nav-btn {
+            background-color: purple;
+            color: white;
+            border: 1px solid white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.25s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nav-btn:hover {
+            background-color: purple;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px purple;
+        }
+        
+        .nav-btn.active {
+            background-color: purple;
+            border-color: white;
+        }
+        
+        .clubs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .club-card {
+            background-color: purple;          
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px white;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid white; 
+        }
+        
+        .club-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px purple;
+        }
+        
+        .club-logo {
+            max-width: 100%;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            padding: 5px;
+        }
+        
+        .club-name {
+            font-weight: bold;
+            color: white;      
+            font-size: 1rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: black;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .clubs-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="../png/Premier League.png" alt="Premier League" class="club-logo">
+            
+            <h1>Premier League 25/26</h1>
+            
+            <div class="nav-buttons">
+                <a href="../main.html" class="nav-btn">Página Principal</a>
+                <a href="../6-ligas/ligaportugal.html" class="nav-btn">Liga Portugal</a>
+                <a href="../6-ligas/laliga.html" class="nav-btn">La Liga</a>
+                <a href="../6-ligas/seriA.html" class="nav-btn">Serie A</a>
+                <a href="../6-ligas/bundesliga.html" class="nav-btn">Bundesliga</a>
+                <a href="../6-ligas/ligue1.html" class="nav-btn">Ligue 1</a>
+            </div>
+        </header>
+
+        <div class="clubs-grid">
+
+                <a href="../PremierLeague_Clubes/afcbournemounth.html" class="club-card">
+                <img src="../png/AFCBournemouth.png" alt="AFC Bournemouth" class="club-logo">
+                <div class="club-name">AFC Bournemouth</div>
+            </a>
+               
+            <a href="../PremierLeague_Clubes/arsenal.html" class="club-card">
+                <img src="../png/Arsenal.png" alt="Arsenal" class="club-logo">
+                <div class="club-name">Arsenal</div>
+            </a>
+        
+            <a href="../PremierLeague_Clubes/astonvilla.html" class="club-card">
+                <img src="../png/Aston Villa.png" alt="Aston Villa" class="club-logo">
+                <div class="club-name">Aston Villa</div>
+            </a>
+      
+            <a href="../PremierLeague_Clubes/brentford.html" class="club-card">
+                <img src="../png/brentford.png" alt="Brentford" class="club-logo">
+                <div class="club-name">Brentford</div>
+            </a>
+
+            <a href="../PremierLeague_Clubes/brigthon.html" class="club-card">
+                <img src="../png/Brighton.png" alt="Brighton" class="club-logo">
+                <div class="club-name">Brighton</div>
+            </a>
+        
+            <a href="../PremierLeague_Clubes/burnley.html" class="club-card">
+                <img src="../png/Burnley.png" alt="Burnley" class="club-logo">
+                <div class="club-name">Burnley</div>
+            </a>
+        
+            <a href="../PremierLeague_Clubes/chelsea.html" class="club-card">
+                <img src="../png/Chelsea.png" alt="Chelsea" class="club-logo">
+                <div class="club-name">Chelsea</div>
+            </a>
+        
+            <a href="../PremierLeague_Clubes/crystalpalace.html" class="club-card">
+                <img src="../png/Crystal Palace.png" alt="Crystal Palace" class="club-logo">
+                <div class="club-name">Crystal Palace</div>
+            </a>
+        
+            <a href="../PremierLeague_Clubes/everton.html" class="club-card">
+                <img src="../png/Everton.png" alt="Everton" class="club-logo">
+                <div class="club-name">Everton</div>
+            </a>
+        
+            <a href="../PremierLeague_Clubes/fulham.html" class="club-card">
+                <img src="../png/Fulham.png" alt="Fulham" class="club-logo">
+                <div class="club-name">Fulham</div>
+            </a>
+        
+            <a href="../PremierLeague_Clubes/Leeds.html" class="club-card">
+                <img src="../png/Leeds.png" alt="Leeds" class="club-logo">
+                <div class="club-name">Leeds</div>
+            </a>
+        
+            <a href="../PremierLeague_Clubes/liverpool.html" class="club-card">
+                <img src="../png/Liverpool.png" alt="Liverpool" class="club-logo">
+                <div class="club-name">Liverpool</div>
+            </a>
+        
+            <a href="../PremierLeague_Clubes/manchestercity.html" class="club-card">
+                <img src="../png/Manchester City.png" alt="Manchester City" class="club-logo">
+                <div class="club-name">Manchester City</div>
+            </a>
+        
+            <a href="../PremierLeague_Clubes/manchesterunited.html" class="club-card">
+                <img src="../png/Manchester United.png" alt="Manchester United" class="club-logo">
+                <div class="club-name">Manchester United</div>
+            </a>
+        
+            <a href="../PremierLeague_Clubes/newcastle.html" class="club-card">
+                <img src="../png/Newcastle.png" alt="Newcastle" class="club-logo">
+                <div class="club-name">Newcastle</div>
+            </a>
+        
+            <a href="../PremierLeague_Clubes/nottinghamforest.html" class="club-card">
+                <img src="../png/Nottingham Forest.png" alt="Nottingham Forest" class="club-logo">
+                <div class="club-name">Nottingham Forest</div>
+            </a>
+     
+            <a href="../PremierLeague_Clubes/sunderland.html" class="club-card">
+                <img src="../png/Sunderland.png" alt="Sunderland" class="club-logo">
+                <div class="club-name">Sunderland</div>
+            </a>
+        
+            <a href="../PremierLeague_Clubes/tottenham.html" class="club-card">
+                <img src="../png/Tottenham Hotspur.png" alt="Tottenham Hotspur" class="club-logo">
+                <div class="club-name">Tottenham Hotspur</div>
+            </a>
+        
+            <a href="../PremierLeague_Clubes/westham.html" class="club-card">
+                <img src="../png/West Ham.png" alt="West Ham" class="club-logo">
+                <div class="club-name">West Ham</div>
+            </a>
+            
+            <a href="../PremierLeague_Clubes/wolverhampton.html" class="club-card">
+                <img src="../png/Wolverhampton.png" alt="Wolverhampton" class="club-logo">
+                <div class="club-name">Wolverhampton</div>
+            </a>
+
+        </div>            
+    </div>
+    
+    <footer>
+        <p>© 2026 Clubes Ingleses - Todos os direitos reservados</p>
+    </footer>
+</body>
+</html>

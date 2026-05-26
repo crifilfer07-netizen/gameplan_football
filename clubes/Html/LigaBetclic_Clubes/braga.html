@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>SC Braga</title>
+    <style>
+        body {
+            background-color: #EE1C23;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color:white;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color:white;
+        }
+
+        .header .logo-placeholder {
+            width: 100%;
+            height: 1px;
+        }
+
+        hr.black-separator {
+            border: none;
+            height: 6px;
+            background-color:white;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: #EE1C23;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #EE1C23;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color:white;
+            padding: 20px;
+            border-radius: 10px;
+            color:#EE1C23;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid white;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.black-separator {
+                grid-column: 1;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>SC Braga</h1>
+        <hr class="black-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Braga.png" >
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador: <a href="https://www.zerozero.pt/treinador/carlos-vicens/46995?search=1" target="_blank"> Carlos Vicens</strong></p></a>
+            <p class="texto-justificado">A carreira de Carlos Vicens é marcada por uma ascensão metódica das camadas jovens até ao topo do futebol mundial, culminando na sua atual posição como treinador principal do SC Braga.  </p>
+
+            <img src="../png/carlos-vicens.png" alt="Treinador">
+
+            <p><strong>Estádio: Municipal de Braga </strong></p>
+            <p class="texto-justificado">O Estádio Municipal de Braga, popularmente conhecido como "A Pedreira", é uma das obras de arquitetura desportiva mais icónicas do mundo. Inaugurado em 30 de dezembro de 2003 para o Euro 2004, o estádio destaca-se por estar literalmente esculpido na encosta do Monte Castro. </p>
+
+            <img src="../png/estadio-municipal-de-braga.jpg" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">O estilo de jogo de Carlos Vicens no SC Braga é fortemente influenciado pelo "ADN Barça" e pelos anos de trabalho com Pep Guardiola, focando-se no domínio territorial e na posse de bola.</p>
+
+            <p>"Humildade, Determinação e Atitude!"</p>
+        </div>
+    </div>
+
+</body>
+</html>

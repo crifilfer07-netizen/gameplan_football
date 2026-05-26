@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>Cagliari</title>
+    <style>
+        body {
+            background-color:#B11C2B;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: #04152D;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color:white;
+        }
+
+        .header .logo-placeholder {
+            width: 100%;
+            height: 1px;
+        }
+
+        hr.black-separator {
+            border: none;
+            height: 6px;
+            background-color:white;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color:#04152D;
+            padding: 20px;
+            border-radius: 10px;
+            color:white;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid #04152D;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.black-separator {
+                grid-column: 1;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>Cagliari</h1>
+        <hr class="black-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Cagliari.png" >
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador:  <a href="https://www.zerozero.pt/treinador/fabio-pisacane/66003?search=1" target="_blank"> Fabio Pisacane</strong></p></a>
+            <p class="texto-justificado">Fabio Pisacane é um treinador resiliente e antigo ídolo do Cagliari. Após o sucesso na formação do clube, onde venceu a Taça de Itália Primavera, assumiu a equipa principal para liderar um projeto de renovação focado na identidade e no lançamento de jovens talentos na Serie A.</p>
+
+            <img src="../png/fabio_pisacane.png" alt="Treinador">
+
+            <p><strong>Estádio: Unipol Domus</strong></p>
+            <p class="texto-justificado">O estádio Unipol Domus é a casa temporária do Cagliari desde 2017, construída enquanto o clube aguarda a renovação do Stadio Sant'Elia. O recinto destaca-se pela sua estrutura moderna e pela proximidade entre as bancadas e o relvado, criando uma atmosfera intensa que simboliza a paixão e o pragmatismo do povo sardo. </p>
+
+            <img src="../png/unipol_domus.jpg" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">O estilo de jogo de Fabio Pisacane no Cagliari, é profundamente influenciado pela sua ligação emocional ao clube e pela sua experiência na formação, focando-se num futebol pragmático, intenso e de forte identidade regional.</p>
+
+            <p>"Una Terra, Un Popolo, Uma Squadra!"</p>
+        </div>
+    </div>
+
+</body>
+</html> 

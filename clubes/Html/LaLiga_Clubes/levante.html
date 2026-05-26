@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>Levante</title>
+    <style>
+        body {
+            background-color: #005CA5;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: white;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color: white;
+        }
+
+        .header .logo-placeholder {
+
+            width: 100%;
+            height: 1px;
+        }
+
+        .hr .white-separator {
+            border: none;
+            height: 6px;
+            background-color: black;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 10px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+           a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color: #B4053F;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid #B4053F;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        /* Responsividade simples */
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.white-separator {
+                grid-column: 2;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>Levante</h1>
+        <hr class="white-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Levante.png" >
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador: <a href="https://www.zerozero.pt/treinador/luis-castro/13104?search=1" target="_blank">Luís Castro</a></strong></p>
+            <p class="texto-justificado">Luís Castro é um treinador português nascido em Vila Real, reconhecido pela sua serenidade e rigor metodológico. Destacou-se em clubes como o Shakhtar Donetsk e o Botafogo antes de assumir o comando do Levante UD</p>
+
+            <img src="../png/luis_castro.png" alt="Treinador">
+
+            <p><strong>Estádio: Estadi Ciutat de València</strong></p>
+            <p class="texto-justificado">O Estadi Ciutat de València é um recinto desportivo espanhol localizado em Valência, conhecido pela sua atmosfera vibrante, moderna e acolhedora. Destacou-se pelas suas recentes renovações estruturais antes de se consolidar como o baluarte estratégico onde o Levante UD disputa os seus jogos em casa.</p>
+
+            <img src="../png/ciutat_de_valencia.webp" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">No Levante, o treinador português Luís Castro implementou um modelo de jogo baseado numa identidade ofensiva e na posse de bola, adaptando os seus princípios clássicos à urgência competitiva da equipa na La Liga.</p>
+
+            <p>"El club de los niños!"</p>
+        </div>
+    </div>
+
+</body>
+</html>

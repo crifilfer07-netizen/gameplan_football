@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>Gil Vicente FC</title>
+    <style>
+        body {
+            background-color:#D52929;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: white;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color:white;
+        }
+
+        .header .logo-placeholder {
+            width: 100%;
+            height: 1px;
+        }
+
+        hr.black-separator {
+            border: none;
+            height: 6px;
+            background-color:white;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color:#0066B3;
+            padding: 20px;
+            border-radius: 10px;
+            color:white;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid #0066B3;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.black-separator {
+                grid-column: 1;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>Gil Vicente FC</h1>
+        <hr class="black-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Gil  Vicente.png" >
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador:  <a href="https://www.zerozero.pt/treinador/cesar-peixoto/37138?search=1" target="_blank"> César Peixoto</p></a></strong>
+            <p class="texto-justificado">A trajetória de César Peixoto é definida pela elegância estratégica e por uma mentalidade ofensiva audaz, afirmando-se como um treinador de perfil resiliente e de vincada capacidade de imprimir um futebol fluido e positivo às su </p>
+
+            <img src="../png/cesar_peixoto.webp" alt="Treinador">
+
+            <p><strong>Estádio: Cidade de Barcelos</strong></p>
+            <p class="texto-justificado">O Estádio Cidade de Barcelos ergue-se como um baluarte da identidade gilista, pautado por uma arquitetura moderna e uma atmosfera de fidelidade inabalável, afirmando-se como um recinto de perfil acolhedor, vibrante e de vincada mística barcelense </p>
+
+            <img src="../png/cidade_de_barcelos.jpeg" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">Desde que assumiu o Gil Vicente FC em dezembro de 2025, César Peixoto tem implementado um modelo de jogo que privilegia a estética, a posse de bola e o protagonismo ofensivo.</p>
+
+            <p>"A Força de um Povo!"</p>
+        </div>
+    </div>
+
+</body>
+</html> 

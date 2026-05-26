@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>Liverpool</title>
+    <style>
+        body {
+            background-color:#fff;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: 	#C8102E;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color: 	#C8102E;
+        }
+
+        .header .logo-placeholder {
+
+            width: 100%;
+            height: 1px;
+        }
+
+        .hr .white-separator {
+            border: none;
+            height: 6px;
+            background-color:#C8102E;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+         a {
+            color: #fff;
+            text-decoration: none;
+        }
+          
+        a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color:#C8102E;
+            padding: 20px;
+            border-radius: 10px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid #C8102E;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+
+        /* Responsividade simples */
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.white-separator {
+                grid-column: 2;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>Liverpool</h1>
+        <hr class="white-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Liverpool.png" >
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador: <a href="http://zerozero.pt/treinador/arne-slot/25511?search=1" >Arne Slot</a></strong></p>
+            <p p class="texto-justificado">Arne Slot é um treinador de futebol neerlandês, conhecido pelo seu estilo de jogo ofensivo e por revitalizar clubes com orçamentos mais modestos. Atualmente, é o treinador principal do Liverpool, clube da Premier League inglesa, desde junho de 2024.</p>
+
+            <img src="../png/arne slot.png" alt="Treinador">
+
+            <p><strong>Estádio: Anfield</strong></p>
+            <p p class="texto-justificado">O estádio de Anfield tem uma história rica, marcada por momentos icónicos, figuras lendárias e uma evolução constante para se manter como um dos recintos mais emblemáticos do futebol mundial.</p>
+
+            <img src="../png/anfield.jpg" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p p class="texto-justificado">O estilo de jogo de Arne Slot baseia-se num futebol ofensivo, de alta intensidade e com foco na posse de bola, que combina os princípios clássicos neerlandeses com uma pressão agressiva e bem organizada. </p>
+
+            <p>"You'll Never Walk Alone!"</p>
+        </div>
+    </div>
+
+</body>
+</html>

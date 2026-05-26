@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>FC Famalicão</title>
+    <style>
+        body {
+            background-color:#003D7E;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: white;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color:#FFD700;
+        }
+
+        .header .logo-placeholder {
+            width: 100%;
+            height: 1px;
+        }
+
+        hr.black-separator {
+            border: none;
+            height: 6px;
+            background-color:white;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: #003D7E;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #003D7E;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color:white;
+            padding: 20px;
+            border-radius: 10px;
+            color:#003D7E;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid white;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.black-separator {
+                grid-column: 1;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>FC Famalicão</h1>
+        <hr class="black-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Famalicão.png" >
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador:  <a href="https://www.zerozero.pt/treinador/hugo-oliveira/1446" target="_blank"> Hugo Oliveira</strong></p></a>
+            <p class="texto-justificado">A trajetória de Hugo Oliveira é definida por uma transição magistral do detalhe técnico para a liderança de elite, afirmando-se como um treinador de perfil metódico, comunicador e de vincada capacidade de comando.  </p>
+
+            <img src="../png/hugo_oliveira.png" alt="Treinador">
+
+            <p><strong>Estádio: Municipal 22 de Junho</strong></p>
+            <p class="texto-justificado">O Estádio Municipal 22 de Junho ergue-se como um baluarte da identidade de Famalicão, pautado por uma mística minhota invulgar e uma proximidade orgânica entre a bancada e o relvado, afirmando-se como um recinto de perfil vibrante, fervoroso e resiliente. </p>
+
+            <img src="../png/municipal_22_junho.webp" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">O estilo de jogo de Hugo Oliveira no FC Famalicão caracteriza-se por uma mentalidade assumidamente ofensiva, privilegiando o domínio da posse de bola e uma recuperação defensiva muito agressiva.</p>
+
+            <p>"Amor de Perdição!"</p>
+        </div>
+    </div>
+
+</body>
+</html> 

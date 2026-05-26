@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>Paris FC</title>
+    <style>
+        body {
+            background-color:#0C183F;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color:#0680BE;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color:white;
+        }
+
+        .header .logo-placeholder {
+
+            width: 100%;
+            height: 1px;
+        }
+
+        .hr .white-separator {
+            border: none;
+            height: 6px;
+            background-color: white;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color:#0680BE;
+            padding: 20px;
+            border-radius: 10px;
+            color:white;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid #0680BE;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+
+        /* Responsividade simples */
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.white-separator {
+                grid-column: 2;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>Paris FC</h1>
+        <hr class="white-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Paris FC.png">
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador: <a href="https://www.zerozero.pt/treinador/antoine-kombouare/227?search=1" target="_blank">Antoine Kombouaré</a></strong></p>
+            <p class="texto-justificado">A história de Antoine Kombouaré é a de um ícone que evoluiu nos relvados para um técnico de renome, consolidando-se como um especialista em missões de resgate e conquistas históricas após uma carreira de sucesso como jogador de elite.</p>
+
+            <img src="../png/antoine_kombouare.png" alt="Treinador">
+
+            <p><strong>Estádio: Stade Jean-Bouin</strong></p>
+            <p class="texto-justificado">A história do Stade Jean-Bouin está profundamente ligada ao desporto em Paris, com uma evolução que passou de um estádio multiusos centenário para uma instalação moderna de râguebi e futebol, localizada a poucos metros do Parc des Princes.
+            </p>
+
+            <img src="../png/stade_jean_bouin.jpg" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">O estilo de jogo que Antoine Kombouaré implementou no Paris FC, é um estilo de jogo pragmático, vertical e de forte cariz defensivo.</p>
+
+            <p>""Fiers d’être Paris FC!"</p>
+        </div>
+    </div>
+
+</body>
+</html>

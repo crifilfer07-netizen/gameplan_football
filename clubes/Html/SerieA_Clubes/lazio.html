@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>S.S.Lazio</title>
+    <style>
+        body {
+            background-color:#87D3F8;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color:white;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color:white;
+        }
+
+        .header .logo-placeholder {
+            width: 100%;
+            height: 1px;
+        }
+
+        hr.black-separator {
+            border: none;
+            height: 6px;
+            background-color:white;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: #87D3F8;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #87D3F8;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color:white;
+            padding: 20px;
+            border-radius: 10px;
+            color:#87D3F8;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid white;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.black-separator {
+                grid-column: 1;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>S.S.Lazio</h1>
+        <hr class="black-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Lazio.png" >
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador:  <a href="https://www.zerozero.pt/treinador/maurizio-sarri/8115?search=1" target="_blank"> Maurizio Sarri</strong></p></a>
+            <p class="texto-justificado">Maurizio Sarri é o "comandante" da estética e do rigor. Conhecido mundialmente pelo seu estilo de jogo batizado como "Sarrismo", o técnico italiano é uma das figuras mais singulares e autênticas do futebol moderno. </p>
+
+            <img src="../png/maurizio_sarri.png" alt="Treinador">
+
+            <p><strong>Estádio: Olimpico</strong></p>
+            <p class="texto-justificado">O Estádio Olímpico é a casa da Lazio desde 1953, onde a "Primeira Equipa da Capital" celebra a sua história. O recinto ganha vida com o voo da águia Olympia e o fervor da Curva Nord, sendo o palco eterno das maiores glórias biancocelesti. </p>
+
+            <img src="../png/olimpico.jpg" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">Na Lazio, Maurizio Sarri implementou o seu famoso "Sarrismo", transformando a equipa num bloco altamente técnico e coordenado.</p>
+
+            <p>"Concordia Parvae Res Crescunt!"</p>
+        </div>
+    </div>
+
+</body>

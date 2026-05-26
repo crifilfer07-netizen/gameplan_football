@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>Girona</title>
+    <style>
+        body {
+            background-color: #D31134;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: white;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color: white;
+        }
+
+        .header .logo-placeholder {
+
+            width: 100%;
+            height: 1px;
+        }
+
+        .hr .white-separator {
+            border: none;
+            height: 6px;
+            background-color: black;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 10px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+           a {
+            color: #C7943E;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #C7943E;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            color: #C7943E;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid white;
+            margin-top: 10px;
+        }
+        
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        /* Responsividade simples */
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.white-separator {
+                grid-column: 2;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>Girona</h1>
+        <hr class="white-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Girona.png" alt="Logo AFC Bournemouth">
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador: <a href="https://www.zerozero.pt/treinador/michel/26529" target="_blank">Míchel</a></strong></p>
+            <p class="texto-justificado">Míchel é um treinador espanhol nascido em Madrid, reconhecido pela sua visão audaz e pela capacidade de extrair um futebol de alta fidelidade dos seus planteis. Após uma carreira distinta como jogador, consolidou-se como um dos técnicos mais entusiasmantes da Europa.</p>
+
+            <img src="../png/michel.png" alt="Treinador">
+
+            <p><strong>Estádio: Estadi Montilivi</strong></p>
+            <p class="texto-justificado">O Girona FC joga no Estadi Montilivi, um recinto acolhedor e carismático com cerca de 14.500 lugares, famoso pela sua atmosfera vibrante e pela proximidade única entre os adeptos e o relvado.</p>
+
+            <img src="../png/estadi_montilivi.webp" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">O estilo de jogo de Míchel no Girona em 2026 é aclamado como um dos mais atrativos e inovadores do futebol mundial, caracterizado por uma coragem ofensiva que desafia as hierarquias tradicionais. </p>
+
+            <p>"Orgull Gironí!"</p>
+        </div>
+    </div>
+
+</body>
+</html>

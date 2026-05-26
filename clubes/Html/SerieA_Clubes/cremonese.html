@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>US Cremonese</title>
+    <style>
+        body {
+            background-color:#A3A3A3;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: #ED1C24;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color:#ED1C24;
+        }
+
+        .header .logo-placeholder {
+            width: 100%;
+            height: 1px;
+        }
+
+        hr.black-separator {
+            border: none;
+            height: 6px;
+            background-color:white;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color:#ED1C24;
+            padding: 20px;
+            border-radius: 10px;
+            color:white;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid#ED1C24;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.black-separator {
+                grid-column: 1;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>US Cremonese</h1>
+        <hr class="black-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Cremonese.png" >
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador:  <a href="https://www.zerozero.pt/treinador/marco-giampaolo/517?search=1" target="_blank"> Marco Giampaolo</strong></p></a>
+            <p class="texto-justificado">Marco Giampaolo, conhecido como o "Maestro", regressou ao comando da US Cremonese em março de 2026. O conceituado técnico italiano lidera agora o projeto do clube na Serie A, aplicando o seu rigoroso e debatido estilo tático numa segunda passagem por Cremona.</p>
+
+            <img src="../png/marco_giampaolo.png" alt="Treinador">
+
+            <p><strong>Estádio: Giovanni Zini</strong></p>
+            <p class="texto-justificado">O estádio Giovanni Zini é a carismática alma da US Cremonese e um símbolo de orgulho para a cidade. Nomeado em homenagem a um guarda-redes herói de guerra, o recinto representa a história e a resiliência do clube na Lombardia. </p>
+
+            <img src="../png/giovanni zini.png" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">O estilo de jogo de Marco Giampaolo na US Cremonese é pautado pelo rigor tático e pela organização geométrica, seguindo a filosofia de que o sucesso vem através do controlo absoluto dos espaços.</p>
+
+            <p>"Amicizia e Vigore!"</p>
+        </div>
+    </div>
+
+</body>
+</html> 

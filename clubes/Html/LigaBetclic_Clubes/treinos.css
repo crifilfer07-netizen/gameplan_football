@@ -1,0 +1,99 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f4f9;
+    color: #333;
+}
+
+/* Hero Section *//* Hero Section */
+.hero {
+    background: url('https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d') no-repeat center center/cover;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* Centraliza verticalmente */
+    align-items: center;       /* Centraliza horizontalmente */
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;           /* Pequeno respiro lateral */
+}
+
+/* Títulos maiores */
+.hero-text h1 {
+    font-size: 4.5rem;         /* Aumenta o tamanho */
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.hero-text p {
+    font-size: 1.8rem;         /* Texto maior */
+    max-width: 800px;          /* Limita largura para não ficar muito esticado */
+}
+
+/* Cards */
+.treinos {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 40px auto;
+    max-width: 1200px;
+}
+
+.card {
+    background: #fff;
+    width: 30%;
+    min-width: 280px;
+    margin: 20px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card h2 {
+    color: #006400;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.card p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.card ul {
+    list-style: none;
+}
+
+.card ul li {
+    background: #e8f5e9;
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+/* Footer */
+footer {
+    background: #006400;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>Bournemouth</title>
+    <style>
+        body {
+            background-color: #d30000;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: white;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color: white;
+        }
+
+        .header .logo-placeholder {
+
+            width: 100%;
+            height: 1px;
+        }
+
+        .hr .white-separator {
+            border: none;
+            height: 6px;
+            background-color: black;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 10px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color: black;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid black;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        /* Responsividade simples */
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.white-separator {
+                grid-column: 2;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>Bournemouth</h1>
+        <hr class="white-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/AFCBournemouth.png" alt="Logo AFC Bournemouth">
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador: <a href="https://www.zerozero.pt/treinador/andoni-iraola/32554" target="_blank">Andoni Iraola</a></strong></p>
+            <p p class="texto-justificado">Andoni Iraola é um treinador espanhol nascido em Usurbil, conhecido pelo seu estilo de jogo intenso, agressivo e altamente organizado. Destacou-se no Rayo Vallecano antes de assumir o comando do Bournemouth.</p>
+
+            <img src="../png/treinador-bournmouth.png" alt="Treinador">
+
+            <p><strong>Estádio: Vitality Stadium</strong></p>
+            <p p class="texto-justificado">O Bournemouth joga no Vitality Stadium, um estádio compacto e vibrante com cerca de 11 mil lugares, famoso pela proximidade entre adeptos e jogadores.</p>
+
+            <img src="../png/vitalaty.jpg" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p p class="texto-justificado">A equipa de Iraola pratica um futebol de alta pressão, intensidade constante e transições rápidas. O Bournemouth tornou-se uma equipa muito agressiva na recuperação da bola e dinâmica no ataque.</p>
+
+            <p>"Together, anything is possible!"</p>
+        </div>
+    </div>
+
+</body>
+</html>

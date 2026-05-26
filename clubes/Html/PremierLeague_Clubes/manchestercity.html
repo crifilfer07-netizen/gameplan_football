@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>Manchester City</title>
+    <style>
+        body {
+            background-color:#6CABDD;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: 	#fff;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color:#fff;
+        }
+
+        .header .logo-placeholder {
+
+            width: 100%;
+            height: 1px;
+        }
+
+        .hr .white-separator {
+            border: none;
+            height: 6px;
+            background-color:#6CABDD;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: #6CABDD;
+            text-decoration: none;
+        }
+          
+        a:hover {
+            color: #6CABDD;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color:#fff;
+            padding: 20px;
+            border-radius: 10px;
+            color: #6CABDD;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid #fff;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+
+        /* Responsividade simples */
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.white-separator {
+                grid-column: 2;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>Manchester City</h1>
+        <hr class="white-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Manchester City.png" >
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador: <a href="https://www.zerozero.pt/treinador/pep-guardiola/658?search=1" >Pep Guardiola</a></strong></p>
+            <p p class="texto-justificado">Pep Guardiola é uma figura revolucionária no futebol, com uma carreira de sucesso tanto como jogador quanto como treinador, marcada pelo seu estilo de jogo baseado na posse de bola e no controlo tático. </p>
+
+            <img src="../png/pep guardiola.png" alt="Treinador">
+
+            <p><strong>Estádio: Ethiad Stadium</strong></p>
+            <p p class="texto-justificado">O Etihad Stadium, casa do Manchester City, tem uma história relativamente recente e que começou fora do futebol, sendo um exemplo de conversão bem-sucedida de um estádio multiusos para um recinto de futebol de elite.</p>
+
+            <img src="../png/ethiad stadium.jpg" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p p class="texto-justificado">O estilo de jogo de Pep Guardiola baseia-se numa filosofia de futebol de controlo total através da posse de bola, conhecida como "jogo de posição". O seu sistema exige uma disciplina tática meticulosa, onde os jogadores ocupam zonas específicas para criar superioridade numérica e desorganizar o adversário. </p>
+
+            <p>"Superbia in Proelio!"</p>
+        </div>
+    </div>
+
+</body>
+</html>

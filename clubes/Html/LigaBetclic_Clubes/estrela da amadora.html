@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>Estrela da Amadora</title>
+    <style>
+        body {
+            background-color:#E30613;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: rgb(0, 153, 255);
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color:#F6DE16;
+        }
+
+        .header .logo-placeholder {
+            width: 100%;
+            height: 1px;
+        }
+
+        hr.black-separator {
+            border: none;
+            height: 6px;
+            background-color:white;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: #009640;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #009640;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color:white;
+            padding: 20px;
+            border-radius: 10px;
+            color:#009640;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid white;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.black-separator {
+                grid-column: 1;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>Estrela da Amadora</h1>
+        <hr class="black-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Estrela da Amadora.webp" >
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador:  <a href="https://www.zerozero.pt/treinador/cristiano-bacci/19884" target="_blank"> Cristiano Bacci</strong></p></a>
+            <p class="texto-justificado">A trajetória de Cristiano Bacci é definida por uma sólida maturidade tática e uma invulgar capacidade de organização coletiva, afirmando-se como um treinador de perfil metódico, resiliente e estrategicamente rigoroso. </p>
+
+            <img src="../png/cristiano_bacci.png" alt="Treinador">
+
+            <p><strong>Estádio: José Gomes</strong></p>
+            <p class="texto-justificado">O Estádio José Gomes ergue-se como um baluarte da identidade da Amadora, pautado por uma mística urbana invulgar e uma proximidade orgânica entre a bancada e o relvado, afirmando-se como um recinto de perfil vibrante, carismático e resiliente. </p>
+
+            <img src="../png/jose_gomes.webp" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">Em maio de 2026, o estilo de jogo de Cristiano Bacci no Estrela da Amadora é marcado por uma abordagem de emergência e pragmatismo, dado que assumiu a equipa a apenas três jornadas do fim do campeonato para lutar contra a despromoção.</p>
+
+            <p>"Sempre Tricolores!"</p>
+        </div>
+    </div>
+
+</body>
+</html> 

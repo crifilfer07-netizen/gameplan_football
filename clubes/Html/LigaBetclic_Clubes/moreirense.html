@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>Moreirense FC</title>
+    <style>
+        body {
+            background-color:#00843D ;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: white;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color:#D4AF37;
+        }
+
+        .header .logo-placeholder {
+            width: 100%;
+            height: 1px;
+        }
+
+        hr.black-separator {
+            border: none;
+            height: 6px;
+            background-color:white;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: #00843D;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #00843D;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color:white;
+            padding: 20px;
+            border-radius: 10px;
+            color:#00843D;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid white;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.black-separator {
+                grid-column: 1;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>Moreirense FC</h1>
+        <hr class="black-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/moreirense.png" >
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador:  <a href="https://www.zerozero.pt/treinador/vasco-botelho-da-costa/28190?search=1" target="_blank">Vasco Botelho da Costa</strong></p></a>
+            <p class="texto-justificado">A trajetória de Vasco Botelho da Costa define-se por uma ascensão meteórica assente no rigor analítico e na liderança estratégica, afirmando-se como um treinador de perfil metódico, adaptável e de vincada capacidade para potenciar o coletivo. </p>
+
+            <img src="../png/vasco_botelho.png" alt="Treinador">
+
+            <p><strong>Estádio: Comendador Joaquim de Almeida Freitas</strong></p>
+            <p class="texto-justificado">O Estádio Comendador Joaquim de Almeida Freitas é a fortaleza xadrez de Moreira de Cónegos um reduto de alma resiliente e proximidade vibrante, onde a vila se agiganta no fervor de um estádio puro e eletrizante. </p>
+
+            <img src="../png/comendador.jpg" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">Vasco Botelho da Costa implementou no Moreirense um estilo de jogo caracterizado pela versatilidade tática e pela procura de uma identidade coletiva forte.</p>
+
+            <p>"Vila de Primeira!"</p>
+        </div>
+    </div>
+
+</body>
+</html> 

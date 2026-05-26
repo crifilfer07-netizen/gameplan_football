@@ -1,0 +1,2099 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinos de Futebol - GamePlan Football</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --light-gold: #F4D03F;
+            --dark-gold: #B8860B;
+            --black: #0A0A0A;
+            --dark-gray: #1A1A1A;
+            --medium-gray: #2A2A2A;
+            --light-gray: #CCCCCC;
+            --white: #F5F5F5;
+            --card-bg: rgba(26, 26, 26, 0.8);
+            --green: #2ECC71;
+            --light-green: #58D68D;
+            --blue: #3498DB;
+            --red: #E74C3C;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        /* Modo Claro */
+        .light-mode {
+            --gold: #B8860B;
+            --light-gold: #D4AF37;
+            --dark-gold: #8B6914;
+            --black: #F5F5F5;
+            --dark-gray: #E0E0E0;
+            --medium-gray: #CCCCCC;
+            --light-gray: #333333;
+            --white: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --green: #27AE60;
+            --light-green: #2ECC71;
+            --blue: #2980B9;
+            --red: #C0392B;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 20%);
+            transition: var(--transition);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Botão Modo Claro/Escuro */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--dark-gray);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--gold);
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+            background: var(--gold);
+            color: var(--black);
+        }
+        
+        /* Navegação Superior */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(10, 10, 10, 0.95);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        
+        .light-mode .top-nav {
+            background-color: rgba(245, 245, 245, 0.95);
+            border-bottom: 1px solid rgba(184, 134, 11, 0.2);
+        }
+        
+        .top-nav nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .top-nav a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+            letter-spacing: 0.5px;
+        }
+        
+        .top-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        .top-nav a:hover {
+            color: var(--gold);
+        }
+        
+        .top-nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Cabeçalho Principal */
+        .main-header {
+            text-align: center;
+            padding: 140px 20px 60px;
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .main-header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            color: var(--light-gray);
+            margin-bottom: 30px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .header-logo {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(244, 208, 63, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            padding: 20px;
+        }
+        
+        .header-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+        }
+        
+        /* Títulos de Seção */
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin: 60px 0 40px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        
+        /* Filtros de Treino */
+        .training-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            background: var(--dark-gray);
+            color: var(--light-gray);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Cards de Treino */
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .training-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .training-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+        }
+        
+        .training-header {
+            padding: 25px 25px 15px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            position: relative;
+        }
+        
+        .training-category {
+            display: inline-block;
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .category-technical {
+            background: rgba(52, 152, 219, 0.2);
+            color: var(--blue);
+            border: 1px solid rgba(52, 152, 219, 0.3);
+        }
+        
+        .category-physical {
+            background: rgba(46, 204, 113, 0.2);
+            color: var(--green);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+        
+        .category-tactical {
+            background: rgba(231, 76, 60, 0.2);
+            color: var(--red);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+        }
+        
+        .training-header h3 {
+            color: var(--white);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.4;
+        }
+        
+        .training-details {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .training-detail {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+        
+        .training-detail i {
+            color: var(--gold);
+        }
+        
+        .training-body {
+            padding: 20px 25px;
+        }
+        
+        .training-body p {
+            color: var(--light-gray);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .training-exercises {
+            margin-top: 20px;
+        }
+        
+        .training-exercises h4 {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .exercise-list {
+            list-style: none;
+        }
+        
+        .exercise-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .exercise-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .exercise-list li i {
+            color: var(--green);
+        }
+        
+        .training-footer {
+            padding: 20px 25px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(26, 26, 26, 0.5);
+        }
+        
+        .difficulty {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .difficulty-label {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+        
+        .stars {
+            color: var(--gold);
+        }
+        
+        .start-btn {
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .start-btn:hover {
+            background: var(--light-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Calendário de Treino */
+        .training-calendar {
+            margin-bottom: 80px;
+        }
+        
+        .calendar-container {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .calendar-header h3 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .calendar-btn {
+            background: var(--dark-gray);
+            color: var(--gold);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .calendar-btn:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+        
+        .calendar-day {
+            text-align: center;
+            padding: 10px;
+            font-weight: 600;
+            color: var(--gold);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        .calendar-date {
+            background: var(--dark-gray);
+            border-radius: 10px;
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid transparent;
+            min-height: 100px;
+            position: relative;
+        }
+        
+        .calendar-date:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .calendar-date.active {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+        
+        .date-number {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 5px;
+        }
+        
+        .calendar-training {
+            background: var(--green);
+            color: var(--black);
+            font-size: 0.7rem;
+            padding: 3px 6px;
+            border-radius: 4px;
+            margin-top: 5px;
+            display: inline-block;
+            font-weight: 600;
+        }
+        
+        .calendar-date.has-training .date-number {
+            color: var(--gold);
+        }
+        
+        /* Modal de Treino */
+        .training-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+        
+        .training-modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            position: relative;
+        }
+        
+        .modal-header {
+            padding: 25px 30px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(26, 26, 26, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .modal-header h3 {
+            color: var(--white);
+            font-size: 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .close-modal {
+            background: transparent;
+            border: none;
+            color: var(--gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .close-modal:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .modal-section {
+            margin-bottom: 30px;
+        }
+        
+        .modal-section h4 {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .exercise-step {
+            background: var(--dark-gray);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--gold);
+        }
+        
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .step-title {
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .step-duration {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .step-description {
+            color: var(--light-gray);
+            line-height: 1.6;
+        }
+        
+        .modal-footer {
+            padding: 20px 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(26, 26, 26, 0.8);
+            position: sticky;
+            bottom: 0;
+        }
+        
+        .timer-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .timer {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .timer-btn {
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .timer-btn:hover {
+            background: var(--light-gold);
+            transform: translateY(-3px);
+        }
+        
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .progress-bar {
+            width: 200px;
+            height: 8px;
+            background: var(--dark-gray);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--light-gold));
+            width: 0%;
+            transition: width 0.5s;
+        }
+        
+        /* Estatísticas de Treino */
+        .training-stats {
+            margin-bottom: 80px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+        
+        .stat-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(244, 208, 63, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--gold);
+            font-size: 1.8rem;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin: 15px 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .stat-label {
+            color: var(--light-gray);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        /* Rodapé */
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+            position: relative;
+            padding-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gold);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+        
+        .contact-info {
+            color: var(--light-gray);
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .contact-info i {
+            color: var(--gold);
+            width: 20px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .social-links a:hover {
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .social-links img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            filter: brightness(0.8);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+        
+        .copyright span {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 1200px) {
+            .training-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .main-header h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .calendar-grid {
+                grid-template-columns: repeat(7, 1fr);
+            }
+            
+            .calendar-date {
+                min-height: 80px;
+                padding: 10px 5px;
+            }
+            
+            .modal-content {
+                max-width: 95%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-nav nav {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+            
+            .main-header {
+                padding: 120px 15px 40px;
+            }
+            
+            .main-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .training-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .calendar-header {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+            
+            .calendar-grid {
+                grid-template-columns: repeat(7, 1fr);
+                font-size: 0.8rem;
+            }
+            
+            .calendar-date {
+                min-height: 70px;
+                padding: 8px 3px;
+            }
+            
+            .modal-footer {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+            
+            .progress-container {
+                width: 100%;
+            }
+            
+            .progress-bar {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .top-nav nav {
+                gap: 15px;
+            }
+            
+            .top-nav a {
+                font-size: 0.9rem;
+            }
+            
+            .main-header h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+            }
+            
+            .training-filters {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .calendar-grid {
+                grid-template-columns: repeat(7, 1fr);
+                gap: 5px;
+            }
+            
+            .calendar-date {
+                min-height: 60px;
+                padding: 5px 2px;
+            }
+            
+            .date-number {
+                font-size: 1rem;
+            }
+            
+            .theme-toggle {
+                width: 45px;
+                height: 45px;
+                top: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Botão Modo Claro/Escuro -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+    <!-- Navegação Superior -->
+    <div class="top-nav">
+        <nav class="container">
+            <a href="..//Html/main.html">Página Principal</a>
+            <a href="../Html/Sobre Nos.html">Sobre Nós</a>
+            <a href="../Html/formacoes.html">Formações</a>
+            <a href="../Html/contactos.html">Contactos</a>
+        </nav>
+    </div>
+    
+    <!-- Conteúdo Principal -->
+    <div class="container">
+        <header class="main-header">
+            <div class="header-logo">
+                <!-- Logo GamePlan -->
+                <img src="../Html/png/logo.png" alt="GamePlan Logo">
+            </div>
+            <h1>Treinos de Futebol</h1>
+            <p class="subtitle">Programas de treino para jogadores de todos os níveis</p>
+        </header>
+        
+        <!-- Filtros de Treino -->
+        <div class="training-filters">
+            <button class="filter-btn active" data-filter="all">
+                <i class="fas fa-futbol"></i> Todos os Treinos
+            </button>
+            <button class="filter-btn" data-filter="technical">
+                <i class="fas fa-dribbble"></i> Técnica
+            </button>
+            <button class="filter-btn" data-filter="physical">
+                <i class="fas fa-running"></i> Físico
+            </button>
+            <button class="filter-btn" data-filter="tactical">
+                <i class="fas fa-chess-board"></i> Tática
+            </button>
+            <button class="filter-btn" data-filter="beginner">
+                <i class="fas fa-star"></i> Iniciante
+            </button>
+            <button class="filter-btn" data-filter="advanced">
+                <i class="fas fa-trophy"></i> Avançado
+            </button>
+        </div>
+        
+        <!-- Grid de Treinos -->
+        <div class="training-grid" id="trainingGrid">
+            <!-- Treino 1 -->
+            <div class="training-card" data-category="technical beginner">
+                <div class="training-header">
+                    <span class="training-category category-technical">Técnica</span>
+                    <h3>Domínio e Controlo de Bola</h3>
+                    <div class="training-details">
+                        <div class="training-detail">
+                            <i class="fas fa-clock"></i> 45 min
+                        </div>
+                        <div class="training-detail">
+                            <i class="fas fa-user-friends"></i> Individual
+                        </div>
+                        <div class="training-detail">
+                            <i class="fas fa-dumbbell"></i> Leve
+                        </div>
+                    </div>
+                </div>
+                <div class="training-body">
+                    <p>Exercícios fundamentais para melhorar o primeiro toque, controlo em diferentes superfícies do corpo e domínio em situações de jogo.</p>
+                    <div class="training-exercises">
+                        <h4><i class="fas fa-list-check"></i> Exercícios Incluídos</h4>
+                        <ul class="exercise-list">
+                            <li><i class="fas fa-check-circle"></i> Domínio com peito e coxa</li>
+                            <li><i class="fas fa-check-circle"></i> Controlo orientado</li>
+                            <li><i class="fas fa-check-circle"></i> Jogging com bola</li>
+                            <li><i class="fas fa-check-circle"></i> Toques alternados</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="training-footer">
+                    <div class="difficulty">
+                        <span class="difficulty-label">Dificuldade:</span>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <button class="start-btn" data-training="1">
+                        <i class="fas fa-play"></i> Começar Treino
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Treino 2 -->
+            <div class="training-card" data-category="physical advanced">
+                <div class="training-header">
+                    <span class="training-category category-physical">Físico</span>
+                    <h3>Resistência e Velocidade</h3>
+                    <div class="training-details">
+                        <div class="training-detail">
+                            <i class="fas fa-clock"></i> 60 min
+                        </div>
+                        <div class="training-detail">
+                            <i class="fas fa-user-friends"></i> Grupo
+                        </div>
+                        <div class="training-detail">
+                            <i class="fas fa-dumbbell"></i> Intenso
+                        </div>
+                    </div>
+                </div>
+                <div class="training-body">
+                    <p>Desenvolva resistência aeróbica e anaeróbica específica para futebol com exercícios que simulam ações do jogo.</p>
+                    <div class="training-exercises">
+                        <h4><i class="fas fa-list-check"></i> Exercícios Incluídos</h4>
+                        <ul class="exercise-list">
+                            <li><i class="fas fa-check-circle"></i> Corridas intervaladas</li>
+                            <li><i class="fas fa-check-circle"></i> Sprint com mudança de direção</li>
+                            <li><i class="fas fa-check-circle"></i> Circuito de agilidade</li>
+                            <li><i class="fas fa-check-circle"></i> Fartlek com bola</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="training-footer">
+                    <div class="difficulty">
+                        <span class="difficulty-label">Dificuldade:</span>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <button class="start-btn" data-training="2">
+                        <i class="fas fa-play"></i> Começar Treino
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Treino 3 -->
+            <div class="training-card" data-category="tactical beginner">
+                <div class="training-header">
+                    <span class="training-category category-tactical">Tática</span>
+                    <h3>Posicionamento Defensivo</h3>
+                    <div class="training-details">
+                        <div class="training-detail">
+                            <i class="fas fa-clock"></i> 50 min
+                        </div>
+                        <div class="training-detail">
+                            <i class="fas fa-user-friends"></i> Equipa
+                        </div>
+                        <div class="training-detail">
+                            <i class="fas fa-dumbbell"></i> Moderado
+                        </div>
+                    </div>
+                </div>
+                <div class="training-body">
+                    <p>Aprenda os princípios básicos da defesa em zona e individual, incluindo cobertura, equilíbrio e compactação.</p>
+                    <div class="training-exercises">
+                        <h4><i class="fas fa-list-check"></i> Exercícios Incluídos</h4>
+                        <ul class="exercise-list">
+                            <li><i class="fas fa-check-circle"></i> Linha defensiva coordenada</li>
+                            <li><i class="fas fa-check-circle"></i> Pressing coletivo</li>
+                            <li><i class="fas fa-check-circle"></i> Transições defesa-ataque</li>
+                            <li><i class="fas fa-check-circle"></i> Exercícios 2v2 e 3v3</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="training-footer">
+                    <div class="difficulty">
+                        <span class="difficulty-label">Dificuldade:</span>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <button class="start-btn" data-training="3">
+                        <i class="fas fa-play"></i> Começar Treino
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Treino 4 -->
+            <div class="training-card" data-category="technical advanced">
+                <div class="training-header">
+                    <span class="training-category category-technical">Técnica</span>
+                    <h3>Finalização Avançada</h3>
+                    <div class="training-details">
+                        <div class="training-detail">
+                            <i class="fas fa-clock"></i> 55 min
+                        </div>
+                        <div class="training-detail">
+                            <i class="fas fa-user-friends"></i> Individual/Grupo
+                        </div>
+                        <div class="training-detail">
+                            <i class="fas fa-dumbbell"></i> Moderado
+                        </div>
+                    </div>
+                </div>
+                <div class="training-body">
+                    <p>Técnicas de finalização em diferentes situações: voleio, meia-volta, chute colocado e finalização sob pressão.</p>
+                    <div class="training-exercises">
+                        <h4><i class="fas fa-list-check"></i> Exercícios Incluídos</h4>
+                        <ul class="exercise-list">
+                            <li><i class="fas fa-check-circle"></i> Chute de primeira</li>
+                            <li><i class="fas fa-check-circle"></i> Finalização em ângulo</li>
+                            <li><i class="fas fa-check-circle"></i> Exercícios com defesa</li>
+                            <li><i class="fas fa-check-circle"></i> Finalização após receção</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="training-footer">
+                    <div class="difficulty">
+                        <span class="difficulty-label">Dificuldade:</span>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <button class="start-btn" data-training="4">
+                        <i class="fas fa-play"></i> Começar Treino
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Treino 5 -->
+            <div class="training-card" data-category="tactical advanced">
+                <div class="training-header">
+                    <span class="training-category category-tactical">Tática</span>
+                    <h3>Transições Rápidas</h3>
+                    <div class="training-details">
+                        <div class="training-detail">
+                            <i class="fas fa-clock"></i> 65 min
+                        </div>
+                        <div class="training-detail">
+                            <i class="fas fa-user-friends"></i> Equipa
+                        </div>
+                        <div class="training-detail">
+                            <i class="fas fa-dumbbell"></i> Intenso
+                        </div>
+                    </div>
+                </div>
+                <div class="training-body">
+                    <p>Trabalhe as transições ofensivas e defensivas com exercícios específicos para reagir rapidamente à perda e recuperação da bola.</p>
+                    <div class="training-exercises">
+                        <h4><i class="fas fa-list-check"></i> Exercícios Incluídos</h4>
+                        <ul class="exercise-list">
+                            <li><i class="fas fa-check-circle"></i> Pressing após perda</li>
+                            <li><i class="fas fa-check-circle"></i> Contra-ataque organizado</li>
+                            <li><i class="fas fa-check-circle"></i> Exercícios 4v4+2</li>
+                            <li><i class="fas fa-check-circle"></i> Transição com mudança de campo</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="training-footer">
+                    <div class="difficulty">
+                        <span class="difficulty-label">Dificuldade:</span>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <button class="start-btn" data-training="5">
+                        <i class="fas fa-play"></i> Começar Treino
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Treino 6 -->
+            <div class="training-card" data-category="physical beginner">
+                <div class="training-header">
+                    <span class="training-category category-physical">Físico</span>
+                    <h3>Força e Potência</h3>
+                    <div class="training-details">
+                        <div class="training-detail">
+                            <i class="fas fa-clock"></i> 50 min
+                        </div>
+                        <div class="training-detail">
+                            <i class="fas fa-user-friends"></i> Individual
+                        </div>
+                        <div class="training-detail">
+                            <i class="fas fa-dumbbell"></i> Moderado
+                        </div>
+                    </div>
+                </div>
+                <div class="training-body">
+                    <p>Desenvolva força funcional específica para futebol com exercícios que melhoram explosão, salto e resistência muscular.</p>
+                    <div class="training-exercises">
+                        <h4><i class="fas fa-list-check"></i> Exercícios Incluídos</h4>
+                        <ul class="exercise-list">
+                            <li><i class="fas fa-check-circle"></i> Plyometrics básicos</li>
+                            <li><i class="fas fa-check-circle"></i> Exercícios de core</li>
+                            <li><i class="fas fa-check-circle"></i> Treino de força funcional</li>
+                            <li><i class="fas fa-check-circle"></i> Exercícios com elásticos</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="training-footer">
+                    <div class="difficulty">
+                        <span class="difficulty-label">Dificuldade:</span>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <button class="start-btn" data-training="6">
+                        <i class="fas fa-play"></i> Começar Treino
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Calendário de Treino -->
+        <div class="training-calendar">
+            <h2 class="section-title">Calendário de Treino Semanal</h2>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <h3>Março 2026</h3>
+                    <div class="calendar-nav">
+                        <button class="calendar-btn" id="prevMonth">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="calendar-btn" id="nextMonth">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Dias da semana serão gerados por JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Estatísticas de Treino -->
+        <div class="training-stats">
+            <h2 class="section-title">As Minhas Estatísticas</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <div class="stat-value" id="totalTrainings">0</div>
+                    <div class="stat-label">Treinos Concluídos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-value" id="totalHours">0</div>
+                    <div class="stat-label">Horas de Treino</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="stat-value" id="caloriesBurned">0</div>
+                    <div class="stat-label">Calorias Queimadas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-value" id="streakDays">0</div>
+                    <div class="stat-label">Dias Consecutivos</div>
+                </div>
+            </div>
+        </div>
+        
+       <!-- Modal de Treino -->
+<div class="training-modal" id="trainingModal">
+    <div class="modal-content">
+        
+        <div class="modal-header">
+            <h3 id="modalTitle">Domínio e Controlo de Bola</h3>
+            <button class="close-modal" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="modal-body">
+            
+            <div class="modal-section">
+                <h4><i class="fas fa-info-circle"></i> Descrição do Treino</h4>
+                <p id="modalDescription">
+                    Exercícios fundamentais para melhorar o primeiro toque, controlo em diferentes superfícies do corpo e domínio em situações de jogo.
+                </p>
+            </div>
+
+            <!-- EXERCÍCIOS -->
+            <div class="modal-section">
+                <h4><i class="fas fa-list-ol"></i> Exercícios</h4>
+
+                <div id="modalExercises">
+                    
+                    <div class="exercise">
+                        <input type="checkbox" class="exercise-check">
+                        <span>Controlo com pé direito</span>
+                    </div>
+
+                    <div class="exercise">
+                        <input type="checkbox" class="exercise-check">
+                        <span>Controlo com pé esquerdo</span>
+                    </div>
+
+                    <div class="exercise">
+                        <input type="checkbox" class="exercise-check">
+                        <span>Domínio com o peito</span>
+                    </div>
+
+                    <div class="exercise">
+                        <input type="checkbox" class="exercise-check">
+                        <span>Receção orientada em movimento</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- DICAS -->
+            <div class="modal-section">
+                <h4><i class="fas fa-lightbulb"></i> Dicas Importantes</h4>
+                <div class="exercise-step">
+                    <div class="step-description">
+                        <p>• Mantenha os olhos na bola durante todo o exercício</p>
+                        <p>• Foque-se na qualidade técnica em vez da velocidade</p>
+                        <p>• Mantenha o corpo relaxado para melhor absorção</p>
+                        <p>• Pratique com ambas as pernas</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <div class="modal-footer">
+
+            <!-- TIMER -->
+            <div class="timer-container">
+                <div class="timer" id="workoutTimer">45:00</div>
+
+                <button class="timer-btn" id="startTimer">
+                    <i class="fas fa-play"></i> Iniciar
+                </button>
+
+                <button class="timer-btn" id="pauseTimer" style="display: none;">
+                    <i class="fas fa-pause"></i> Pausar
+                </button>
+            </div>
+
+            <!-- PROGRESSO -->
+            <div class="progress-container">
+                <span id="progressText">Progresso: 0%</span>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+        
+        <!-- Rodapé -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>GamePlan Football</h3>
+                    <p>O portal definitivo para análise tática, estatísticas e notícias do mundo do futebol. Cobertura completa das principais ligas europeias com foco em Portugal.</p><br>
+                    
+                    <div class="contact-info">
+                        <div><i class="fas fa-map-marker-alt"></i> Porto, Portugal</div>
+                        <div><i class="fas fa-phone"></i> +351 926 431 932</div>
+                        <div><i class="fas fa-envelope"></i> gameplanfootball1@gmail.com</div>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ligas</h3>
+                    <ul class="footer-links">
+                        <li><a href="../Html/6-ligas/ligaportugal.html"><i class="fas fa-chevron-right"></i> Liga Portugal</a></li>
+                        <li><a href="../Html/6-ligas/premier.html"><i class="fas fa-chevron-right"></i> Premier League</a></li>
+                        <li><a href="../Html/6-ligas/laliga.html"><i class="fas fa-chevron-right"></i> La Liga</a></li>
+                        <li><a href="../Html/6-ligas/seriA.html"><i class="fas fa-chevron-right"></i> Serie A</a></li>
+                        <li><a href="../Html/6-ligas/bundesliga.html"><i class="fas fa-chevron-right"></i> Bundesliga</a></li>
+                        <li><a href="../Html/6-ligas/ligue1.html"><i class="fas fa-chevron-right"></i> Ligue 1</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Recursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="../Html/main.html"><i class="fas fa-chevron-right"></i> Página Principal</a></li>
+                        <li><a href="../Html/contactos.html"><i class="fas fa-chevron-right"></i> Envie o Seu Feedback</a></li>
+                        <li><a href="../Html/treinos.html"><i class="fas fa-chevron-right"></i> Treinos</a></li>
+                        <li><a href="../Html/formacoes.html"><i class="fas fa-chevron-right"></i> Simulador de Formações</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-envelope"></i> gameplanfootball1@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> +351 938 815 026</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Porto, Portugal</a></li>
+                        <li><a href="../Html/Sobre Nos.html"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Redes Sociais com logos -->
+            <div class="social-links">
+                <a href="https://www.instagram.com/gameplanfootball1?igsh=OXY3eW13NnRqcGhi" target="_blank">
+                    <img src="../Html/png/Instagram_icon.png" alt="Instagram">
+                    Instagram
+                </a>
+                
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gameplanfootball1@gmail.com" target="_blank" class="social-icon" title="Enviar Email">
+            <i class="fas fa-envelope"></i>
+             E-Mail
+        </a>
+            </div>
+            
+            <div class="copyright">
+                <p>© <span>2026</span> GamePlan Football - Todos os direitos reservados | Porto, Portugal</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Sistema de Modo Claro/Escuro
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            
+            if (document.body.classList.contains('light-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('gameplan-theme', 'light');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('gameplan-theme', 'dark');
+            }
+        });
+        
+        // Verificar preferência salva
+        const savedTheme = localStorage.getItem('gameplan-theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        // Dados dos treinos
+        const trainingData = {
+            1: {
+                title: "Domínio e Controlo de Bola",
+                description: "Exercícios fundamentais para melhorar o primeiro toque, controlo em diferentes superfícies do corpo e domínio em situações de jogo.",
+                duration: 45,
+                exercises: [
+                    { name: "Aquecimento: Toques Alternados", duration: 10, description: "Realize 100 toques alternando entre os pés, focando no controlo da bola." },
+                    { name: "Domínio com Peito e Coxa", duration: 10, description: "Pratique o domínio de bolas altas usando o peito e a coxa, controlando a bola para o chão." },
+                    { name: "Controlo Orientado", duration: 15, description: "Receba passes e controle a bola na direção desejada antes de passar de volta." },
+                    { name: "Jogging com Bola", duration: 10, description: "Corra pelo campo mantendo a bola próxima aos pés com toques suaves." }
+                ],
+                calories: 280,
+                category: "technical"
+            },
+            2: {
+                title: "Resistência e Velocidade",
+                description: "Desenvolva resistência aeróbica e anaeróbica específica para futebol com exercícios que simulam ações do jogo.",
+                duration: 60,
+                exercises: [
+                    { name: "Aquecimento Dinâmico", duration: 10, description: "Alongamentos dinâmicos e corrida leve para preparar o corpo." },
+                    { name: "Corridas Intervaladas", duration: 15, description: "20 segundos de sprint máximo seguidos de 40 segundos de recuperação ativa. Repita 8 vezes." },
+                    { name: "Sprint com Mudança de Direção", duration: 20, description: "Sprints curtos com mudanças bruscas de direção simulando ações de jogo." },
+                    { name: "Fartlek com Bola", duration: 15, description: "Corrida contínua com variações de intensidade, mantendo o controle da bola." }
+                ],
+                calories: 450,
+                category: "physical"
+            },
+            3: {
+                title: "Posicionamento Defensivo",
+                description: "Aprenda os princípios básicos da defesa em zona e individual, incluindo cobertura, equilíbrio e compactação.",
+                duration: 50,
+                exercises: [
+                    { name: "Aquecimento Coletivo", duration: 10, description: "Exercícios de passe e movimento em grupo para aquecimento." },
+                    { name: "Linha Defensiva Coordenada", duration: 15, description: "Trabalhe o movimento em linha com 4 defensores, mantendo distâncias adequadas." },
+                    { name: "Pressing Coletivo", duration: 15, description: "Exercício de pressing em grupo para recuperar a bola rapidamente." },
+                    { name: "Transições Defesa-Ataque", duration: 10, description: "Prática de transições rápidas após recuperação da bola." }
+                ],
+                calories: 320,
+                category: "tactical"
+            },
+            4: {
+                title: "Finalização Avançada",
+                description: "Técnicas de finalização em diferentes situações: voleio, meia-volta, chute colocado e finalização sob pressão.",
+                duration: 55,
+                exercises: [
+                    { name: "Aquecimento de Finalização", duration: 10, description: "Chutes leves ao gol para aquecimento específico." },
+                    { name: "Chute de Primeira", duration: 15, description: "Finalização direta após receção de passe, sem controlar a bola." },
+                    { name: "Finalização em Ângulo", duration: 20, description: "Exercícios de finalização a partir de diferentes ângulos em relação ao gol." },
+                    { name: "Finalização sob Pressão", duration: 10, description: "Finalização com defensor se aproximando para simular pressão." }
+                ],
+                calories: 350,
+                category: "technical"
+            },
+            5: {
+                title: "Transições Rápidas",
+                description: "Trabalhe as transições ofensivas e defensivas com exercícios específicos para reagir rapidamente à perda e recuperação da bola.",
+                duration: 65,
+                exercises: [
+                    { name: "Aquecimento com Bola", duration: 10, description: "Exercícios de passe e movimento em ritmo acelerado." },
+                    { name: "Pressing após Perda", duration: 20, description: "Exercício de recuperação imediata da bola após perda na zona ofensiva." },
+                    { name: "Contra-ataque Organizado", duration: 20, description: "Transição rápida do setor defensivo para o ofensivo em 3-4 passes." },
+                    { name: "Jogo Reduzido 4v4+2", duration: 15, description: "Jogo com ênfase nas transições rápidas com jogadores neutros." }
+                ],
+                calories: 400,
+                category: "tactical"
+            },
+            6: {
+                title: "Força e Potência",
+                description: "Desenvolva força funcional específica para futebol com exercícios que melhoram explosão, salto e resistência muscular.",
+                duration: 50,
+                exercises: [
+                    { name: "Aquecimento Muscular", duration: 10, description: "Mobilidade articular e ativação muscular específica." },
+                    { name: "Plyometrics Básicos", duration: 15, description: "Saltos verticais, horizontais e laterais para desenvolver explosão." },
+                    { name: "Treino de Core", duration: 15, description: "Exercícios para fortalecimento do core: prancha, mountain climbers, russian twists." },
+                    { name: "Força Funcional", duration: 10, description: "Agachamentos, lunges e exercícios com elásticos de resistência." }
+                ],
+                calories: 300,
+                category: "physical"
+            }
+        };
+        
+        // Filtros de treino
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const trainingCards = document.querySelectorAll('.training-card');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remover classe active de todos os botões
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Adicionar classe active ao botão clicado
+                    btn.classList.add('active');
+                    
+                    const filter = btn.dataset.filter;
+                    
+                    trainingCards.forEach(card => {
+                        if (filter === 'all') {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else if (card.dataset.category.includes(filter)) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+            
+            // Calendário de treino
+            const calendarGrid = document.getElementById('calendarGrid');
+            const prevMonthBtn = document.getElementById('prevMonth');
+            const nextMonthBtn = document.getElementById('nextMonth');
+            
+            let currentDate = new Date(2026, 2, 1); // Março 2026
+            
+            function generateCalendar(date) {
+                calendarGrid.innerHTML = '';
+                
+                // Dias da semana
+                const days = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB'];
+                days.forEach(day => {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day';
+                    dayElement.textContent = day;
+                    calendarGrid.appendChild(dayElement);
+                });
+                
+                const year = date.getFullYear();
+                const month = date.getMonth();
+                
+                // Primeiro dia do mês
+                const firstDay = new Date(year, month, 1);
+                // Último dia do mês
+                const lastDay = new Date(year, month + 1, 0);
+                // Dia da semana do primeiro dia (0 = Domingo, 1 = Segunda, ...)
+                const firstDayIndex = firstDay.getDay();
+                // Total de dias no mês
+                const daysInMonth = lastDay.getDate();
+                
+                // Dias vazios antes do primeiro dia
+                for (let i = 0; i < firstDayIndex; i++) {
+                    const emptyDay = document.createElement('div');
+                    emptyDay.className = 'calendar-date';
+                    calendarGrid.appendChild(emptyDay);
+                }
+                
+                // Dias do mês
+                const today = new Date();
+                const isCurrentMonth = today.getMonth() === month && today.getFullYear() === year;
+                
+                // Dias com treino marcado (para exemplo)
+                const trainingDays = [3, 5, 8, 12, 15, 17, 19, 22, 25, 28];
+                
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dateElement = document.createElement('div');
+                    dateElement.className = 'calendar-date';
+                    
+                    const dateNumber = document.createElement('div');
+                    dateNumber.className = 'date-number';
+                    dateNumber.textContent = day;
+                    
+                    dateElement.appendChild(dateNumber);
+                    
+                    // Verificar se é hoje
+                    if (isCurrentMonth && day === today.getDate()) {
+                        dateElement.classList.add('active');
+                    }
+                    
+                    // Verificar se tem treino
+                    if (trainingDays.includes(day)) {
+                        dateElement.classList.add('has-training');
+                        
+                        const trainingBadge = document.createElement('div');
+                        trainingBadge.className = 'calendar-training';
+                        trainingBadge.textContent = 'TREINO';
+                        dateElement.appendChild(trainingBadge);
+                    }
+                    
+                    calendarGrid.appendChild(dateElement);
+                }
+                
+                // Atualizar título do calendário
+                const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+                                   "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+                document.querySelector('.calendar-header h3').textContent = 
+                    `${monthNames[month]} ${year}`;
+            }
+            
+            // Gerar calendário inicial
+            generateCalendar(currentDate);
+            
+            // Navegação do calendário
+            prevMonthBtn.addEventListener('click', () => {
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                generateCalendar(currentDate);
+            });
+            
+            nextMonthBtn.addEventListener('click', () => {
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                generateCalendar(currentDate);
+            });
+            
+            // Sistema de estatísticas
+            const stats = JSON.parse(localStorage.getItem('gameplan-training-stats')) || {
+                totalTrainings: 0,
+                totalMinutes: 0,
+                caloriesBurned: 0,
+                streakDays: 0,
+                lastTrainingDate: null
+            };
+            
+            // Atualizar contadores
+            document.getElementById('totalTrainings').textContent = stats.totalTrainings;
+            document.getElementById('totalHours').textContent = Math.floor(stats.totalMinutes / 60);
+            document.getElementById('caloriesBurned').textContent = stats.caloriesBurned;
+            document.getElementById('streakDays').textContent = stats.streakDays;
+            
+            // Sistema de treino (modal)
+            const trainingModal = document.getElementById('trainingModal');
+            const closeModalBtn = document.getElementById('closeModal');
+            const startBtns = document.querySelectorAll('.start-btn');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalExercises = document.getElementById('modalExercises');
+            const workoutTimer = document.getElementById('workoutTimer');
+            const startTimerBtn = document.getElementById('startTimer');
+            const pauseTimerBtn = document.getElementById('pauseTimer');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            
+            let currentTrainingId = null;
+            let timerInterval = null;
+            let remainingTime = 0;
+            let isTimerRunning = false;
+            
+            // Abrir modal ao clicar em "Começar Treino"
+            startBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const trainingId = btn.dataset.training;
+                    currentTrainingId = trainingId;
+                    
+                    const training = trainingData[trainingId];
+                    
+                    // Preencher modal com dados do treino
+                    modalTitle.textContent = training.title;
+                    modalDescription.textContent = training.description;
+                    
+                    // Preencher exercícios
+                    modalExercises.innerHTML = '';
+                    training.exercises.forEach((exercise, index) => {
+                        const exerciseElement = document.createElement('div');
+                        exerciseElement.className = 'exercise-step';
+                        
+                        exerciseElement.innerHTML = `
+                            <div class="step-header">
+                                <div class="step-title">${index + 1}. ${exercise.name}</div>
+                                <div class="step-duration">${exercise.duration} min</div>
+                            </div>
+                            <div class="step-description">
+                                <p>${exercise.description}</p>
+                            </div>
+                        `;
+                        
+                        modalExercises.appendChild(exerciseElement);
+                    });
+                    
+                    // Configurar timer
+                    remainingTime = training.duration * 60; // Converter para segundos
+                    updateTimerDisplay();
+                    
+                    // Resetar progresso
+                    progressFill.style.width = '0%';
+                    progressText.textContent = 'Progresso: 0%';
+                    
+                    // Mostrar modal
+                    trainingModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Fechar modal
+            closeModalBtn.addEventListener('click', closeModal);
+            
+            // Fechar modal ao clicar fora
+            trainingModal.addEventListener('click', (e) => {
+                if (e.target === trainingModal) {
+                    closeModal();
+                }
+            });
+            
+            function closeModal() {
+                trainingModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                stopTimer();
+            }
+            
+            // Timer functions
+            function updateTimerDisplay() {
+                const minutes = Math.floor(remainingTime / 60);
+                const seconds = remainingTime % 60;
+                workoutTimer.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                // Atualizar progresso
+                if (currentTrainingId) {
+                    const totalTime = trainingData[currentTrainingId].duration * 60;
+                    const progress = ((totalTime - remainingTime) / totalTime) * 100;
+                    progressFill.style.width = `${progress}%`;
+                    progressText.textContent = `Progresso: ${Math.round(progress)}%`;
+                }
+            }
+            
+            function startTimer() {
+                if (isTimerRunning) return;
+                
+                isTimerRunning = true;
+                startTimerBtn.style.display = 'none';
+                pauseTimerBtn.style.display = 'flex';
+                
+                timerInterval = setInterval(() => {
+                    if (remainingTime > 0) {
+                        remainingTime--;
+                        updateTimerDisplay();
+                    } else {
+                        completeTraining();
+                        stopTimer();
+                    }
+                }, 1000);
+            }
+            
+            function pauseTimer() {
+                isTimerRunning = false;
+                startTimerBtn.style.display = 'flex';
+                pauseTimerBtn.style.display = 'none';
+                
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+            }
+            
+            function stopTimer() {
+                isTimerRunning = false;
+                startTimerBtn.style.display = 'flex';
+                pauseTimerBtn.style.display = 'none';
+                
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+            }
+            
+            function completeTraining() {
+                if (!currentTrainingId) return;
+                
+                const training = trainingData[currentTrainingId];
+                
+                // Atualizar estatísticas
+                stats.totalTrainings++;
+                stats.totalMinutes += training.duration;
+                stats.caloriesBurned += training.calories;
+                
+                // Verificar streak
+                const today = new Date().toDateString();
+                if (stats.lastTrainingDate !== today) {
+                    const lastDate = stats.lastTrainingDate ? new Date(stats.lastTrainingDate) : null;
+                    const todayDate = new Date();
+                    
+                    if (lastDate) {
+                        const diffTime = Math.abs(todayDate - lastDate);
+                        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                        
+                        if (diffDays === 1) {
+                            stats.streakDays++;
+                        } else if (diffDays > 1) {
+                            stats.streakDays = 1; // Reset streak if more than 1 day gap
+                        }
+                    } else {
+                        stats.streakDays = 1;
+                    }
+                    
+                    stats.lastTrainingDate = today;
+                }
+                
+                // Salvar estatísticas
+                localStorage.setItem('gameplan-training-stats', JSON.stringify(stats));
+                
+                // Atualizar display
+                document.getElementById('totalTrainings').textContent = stats.totalTrainings;
+                document.getElementById('totalHours').textContent = Math.floor(stats.totalMinutes / 60);
+                document.getElementById('caloriesBurned').textContent = stats.caloriesBurned;
+                document.getElementById('streakDays').textContent = stats.streakDays;
+                
+                // Mostrar mensagem de conclusão
+                alert(`Parabéns! Você completou o treino "${training.title}".\n\nEstatísticas atualizadas:\n• Treinos completos: ${stats.totalTrainings}\n• Calorias queimadas: ${stats.caloriesBurned}\n• Dias consecutivos: ${stats.streakDays}`);
+                
+                // Fechar modal após 3 segundos
+                setTimeout(() => {
+                    closeModal();
+                }, 3000);
+            }
+            
+            // Event listeners para timer
+            startTimerBtn.addEventListener('click', startTimer);
+            pauseTimerBtn.addEventListener('click', pauseTimer);
+            
+            // Adicionar ano atual no rodapé
+            const yearSpan = document.querySelector('.copyright span');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+            
+            // Animar cards de treino ao carregar
+            const cards = document.querySelectorAll('.training-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+            
+            // Adicionar efeitos visuais
+            setInterval(() => {
+                // Efeito de brilho aleatório nos cards
+                cards.forEach(card => {
+                    if (Math.random() > 0.98) {
+                        card.style.boxShadow = '0 20px 50px rgba(212, 175, 55, 0.3)';
+                        card.style.borderColor = 'rgba(212, 175, 55, 0.5)';
+                        
+                        setTimeout(() => {
+                            card.style.boxShadow = '';
+                            card.style.borderColor = '';
+                        }, 1000);
+                    }
+                });
+            }, 3000);
+        });
+        
+        // Navegação suave para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

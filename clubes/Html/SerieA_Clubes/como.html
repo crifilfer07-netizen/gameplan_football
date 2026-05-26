@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>Como 1907</title>
+    <style>
+        body {
+            background-color:white;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: rgb(0, 153, 255);
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color:#1B365D;
+        }
+
+        .header .logo-placeholder {
+            width: 100%;
+            height: 1px;
+        }
+
+        hr.black-separator {
+            border: none;
+            height: 6px;
+            background-color:white;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color:#1B365D;
+            padding: 20px;
+            border-radius: 10px;
+            color:white;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid #1B365D;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.black-separator {
+                grid-column: 1;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>Como 1907</h1>
+        <hr class="black-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Como.png" >
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador:  <a href="https://www.zerozero.pt/treinador/cesc-fabregas/69524?search=1" target="_blank"> Cesc Fàbregas</strong></p></a>
+            <p class="texto-justificado">Cesc Fàbregas tornou-se um dos treinadores mais inovadores da Serie A . Após retirar-se como jogador no Como em 2023, assumiu o comando técnico do clube, evoluindo de adjunto a treinador principal com um projeto de longo prazo.</p>
+
+            <img src="../png/cesc_fabregas.png" alt="Treinador">
+
+            <p><strong>Estádio: Giuseppe Sinigaglia</strong></p>
+            <p class="texto-justificado">O estádio Giuseppe Sinigaglia é a histórica e icónica casa do Como 1907. Destaca-se pela sua localização privilegiada junto ao Lago de Como, unindo a beleza natural da paisagem a uma atmosfera vibrante e moderna no coração do futebol italiano.</p>
+
+            <img src="../png/giuseppe_sinigaglia.webp" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">O estilo de jogo de Cesc Fàbregas no Como 1907 é uma extensão direta da sua inteligência como jogador, um futebol cerebral, técnico e profundamente influenciado pela escola do Barcelona e pela verticalidade da Premier League.</p>
+
+            <p>"Semper Lucum!"</p>
+        </div>
+    </div>
+
+</body>
+</html> 

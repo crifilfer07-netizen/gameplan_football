@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>Sporting CP</title>
+    <style>
+        body {
+            background-color:#008050;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: white;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color:white;
+        }
+
+        .header .logo-placeholder {
+            width: 100%;
+            height: 1px;
+        }
+
+        hr.black-separator {
+            border: none;
+            height: 6px;
+            background-color:white;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: #008050;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #008050;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color:white;
+            padding: 20px;
+            border-radius: 10px;
+            color:#008050;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid white;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.black-separator {
+                grid-column: 1;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>Sporting CP</h1>
+        <hr class="black-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/sporting.png" >
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador:  <a href="https://www.zerozero.pt/treinador/rui-borges/28061?search=1" target="_blank"> Rui Borges</strong></p></a>
+            <p class="texto-justificado">A trajetória de Rui Borges é definida por uma ascensão meteórica assente na competência tática e na valorização do jogo positivo, afirmando-se como um treinador de perfil audaz e de vincada capacidade de potenciar o talento individual em prol do coletivo.  </p>
+
+            <img src="../png/rui_borges.webp" alt="Treinador">
+
+            <p><strong>Estádio: José Alvalade</strong></p>
+            <p class="texto-justificado">O Estádio José Alvalade ergue-se como um expoente da modernidade leonina, pautado por uma arquitetura arrojada e uma atmosfera de comunhão intergeracional, afirmando-se como um recinto de perfil vanguardista, místico e de vincada identidade verde e branca. </p>
+
+            <img src="../png/jose_alvalade.jpg" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">Desde que assumiu o Sporting Clube de Portugal em dezembro de 2024, Rui Borges tem implementado um estilo de jogo que marca uma rotura com o sistema de três centrais, focando-se num futebol mais vertical, agressivo e de grande intensidade física.</p>
+
+            <p>"Onde Vai Um, Vão Todos!"</p>
+        </div>
+    </div>
+
+</body>
+</html> 

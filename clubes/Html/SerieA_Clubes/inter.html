@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>Inter Milão</title>
+    <style>
+        body {
+            background-color:#010E80;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: black;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color:white;
+        }
+
+        .header .logo-placeholder {
+            width: 100%;
+            height: 1px;
+        }
+
+        hr.black-separator {
+            border: none;
+            height: 6px;
+            background-color:white;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color:black;
+            padding: 20px;
+            border-radius: 10px;
+            color:white;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid black;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.black-separator {
+                grid-column: 1;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>Inter Milão</h1>
+        <hr class="black-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Inter.png" >
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador:  <a href="https://www.zerozero.pt/treinador/cristian-chivu/50843?search=1" target="_blank"> Cristian Chivu</strong></p></a>
+            <p class="texto-justificado">Reconhecido pela inteligência tática e elegância como jogador, o romeno Cristian Chivu reafirmou o seu prestígio agora como treinador. Após um percurso de sucesso na formação, ele consolida-se como uma figura de elite pronta para novos desafios no futebol europeu. </p>
+
+            <img src="../png/cristian_chivu.png" alt="Treinador">
+
+            <p><strong>Estádio: Giuseppe Meazza</strong></p>
+            <p class="texto-justificado">O Estádio Giuseppe Meazza, em Milão, é considerado a "catedral" do futebol italiano. É um marco histórico e arquitetónico mundialmente famoso por ser a casa partilhada de dois rivais gigantes: o AC Milan e o Inter de Milão. </p>
+
+            <img src="../png/giuseppe_meazza.jpg" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">Como treinador do Inter de Milão na temporada 2025/2026, Cristian Chivu tem-se destacado por uma abordagem que mistura continuidade tática com uma gestão de grupo pragmática.</p>
+
+            <p>"I Am Brave, Fearless, Proud. I Am Milano!"</p>
+        </div>
+    </div>
+
+</body>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>Hellas Verona FC</title>
+    <style>
+        body {
+            background-color:#FFF200;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: #005395;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color:#005395;
+        }
+
+        .header .logo-placeholder {
+            width: 100%;
+            height: 1px;
+        }
+
+        hr.black-separator {
+            border: none;
+            height: 6px;
+            background-color:white;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: #FFF200;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #FFF200;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color:#005395;
+            padding: 20px;
+            border-radius: 10px;
+            color:#FFF200;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid #005395;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.black-separator {
+                grid-column: 1;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>Hellas Verona FC</h1>
+        <hr class="black-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Hellas Verona.png" >
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador:  <a href="https://www.zerozero.pt/treinador/paolo-sammarco/65070?search=1" target="_blank"> 
+Paolo Sammarco</strong></p></a>
+            <p class="texto-justificado">Paolo Sammarco, ex-jogador e técnico da formação do Hellas Verona, assumiu a equipa principal como interino para garantir a manutenção na Serie A. Conhecedor profundo do clube, destaca-se pela aposta em jovens e por uma liderança pragmática fiel à identidade gialloblù. </p>
+
+            <img src="../png/paolo_sammarco.png" alt="Treinador">
+
+            <p><strong>Estádio: MarcAntonio Bentegodi</strong></p>
+            <p class="texto-justificado">O estádio Marcantonio Bentegodi é um dos recintos mais históricos e singulares de Itália. Inaugurado em 1963, situa-se em Verona e serve de casa ao Hellas Verona, sendo famoso pela sua estrutura imponente e pela atmosfera vibrante que os adeptos locais criam. </p>
+
+            <img src="../png/marcantonio_bentegodi.jpg" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">O estilo de jogo de Paolo Sammarco no Hellas Verona é pautado pela solidez defensiva e pela exploração rápida da verticalidade, adaptando-se à realidade de uma equipa que luta por cada ponto na Serie A.</p>
+
+            <p>"Zuliani e la Scala!"</p>
+        </div>
+    </div>
+
+</body>
+</html> 

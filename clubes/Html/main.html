@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamePlan Football - O Seu Portal de Futebol</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --light-gold: #F4D03F;
+            --dark-gold: #B8860B;
+            --black: #0A0A0A;
+            --dark-gray: #1A1A1A;
+            --medium-gray: #2A2A2A;
+            --light-gray: #CCCCCC;
+            --white: #F5F5F5;
+            --card-bg: rgba(26, 26, 26, 0.8);
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        /* Modo Claro */
+        .light-mode {
+            --gold: #B8860B;
+            --light-gold: #D4AF37;
+            --dark-gold: #8B6914;
+            --black: #F5F5F5;
+            --dark-gray: #E0E0E0;
+            --medium-gray: #CCCCCC;
+            --light-gray: #333333;
+            --white: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.9);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 20%);
+            transition: var(--transition);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Botão Modo Claro/Escuro */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--dark-gray);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--gold);
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+            background: var(--gold);
+            color: var(--black);
+        }
+        
+        /* Navegação Superior */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(10, 10, 10, 0.95);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        
+        .light-mode .top-nav {
+            background-color: rgba(245, 245, 245, 0.95);
+            border-bottom: 1px solid rgba(184, 134, 11, 0.2);
+        }
+        
+        .top-nav nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .top-nav a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+            letter-spacing: 0.5px;
+        }
+        
+        .top-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        .top-nav a:hover {
+            color: var(--gold);
+        }
+        
+        .top-nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Cabeçalho Principal */
+        .main-header {
+            text-align: center;
+            padding: 140px 20px 60px;
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .main-header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            color: var(--light-gray);
+            margin-bottom: 30px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .header-logo {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(244, 208, 63, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            padding: 20px;
+        }
+        
+        .header-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+        }
+        
+        /* Títulos de Seção */
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin: 60px 0 40px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        
+        /* Grid de Ligas - Estilo melhorado */
+        .leagues-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .league-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .league-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            z-index: 0;
+            transition: var(--transition);
+        }
+        
+        .league-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+        
+        .league-card:hover::before {
+            transform: rotate(180deg);
+        }
+        
+        .league-logo {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+        }
+        
+        .league-name {
+            color: var(--light-gray);
+            font-weight: 600;
+            font-size: 1.4rem;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+            margin-bottom: 10px;
+        }
+        
+        .league-card:hover .league-name {
+            color: var(--gold);
+        }
+        
+        .league-country {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .league-teams {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .team-badge {
+            width: 35px;
+            height: 35px;
+            background: var(--dark-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--light-gray);
+            transition: var(--transition);
+        }
+        
+        .team-badge:hover {
+            transform: scale(1.2);
+            background: var(--gold);
+            color: var(--black);
+        }
+        
+        /* Recursos */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--light-gold));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .feature-card h3 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .feature-card p {
+            color: var(--light-gray);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+        
+        /* Estatísticas */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+        
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin: 15px 0;
+            font-family: 'Montserrat', sans-serif;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .stat-label {
+            color: var(--light-gray);
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        
+        /* Próximos Jogos */
+        .upcoming-matches {
+            margin-bottom: 60px;
+        }
+        
+        .match {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .match:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-5px);
+        }
+        
+        .match::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.03) 50%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .match-teams {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .team-logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.3));
+        }
+        
+        .match-teams span {
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        .match-teams span:nth-child(3) {
+            color: var(--gold);
+            font-weight: 700;
+            margin: 0 10px;
+        }
+        
+        .match-date {
+            text-align: center;
+            color: var(--light-gray);
+            font-size: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Notícias */
+        .news-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .news-item {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .news-item:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+        }
+        
+        .news-date {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .news-date::before {
+            content: '📅';
+            font-size: 1rem;
+        }
+        
+        .news-item h3 {
+            color: var(--white);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.4;
+        }
+        
+        .news-item p {
+            color: var(--light-gray);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+        
+        /* Rodapé - Melhorado com contatos */
+        footer {
+            background: var(--dark-gray);
+            border-radius: 20px;
+            padding: 50px 30px 30px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            margin: 60px 0 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--light-gold));
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+            position: relative;
+            padding-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gold);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+        
+        .contact-info {
+            color: var(--light-gray);
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .contact-info i {
+            color: var(--gold);
+            width: 20px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .social-links a:hover {
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .social-links img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            filter: brightness(0.8);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+        
+        .copyright span {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        /* Animações */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); }
+            50% { box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .glowing {
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 1200px) {
+            .leagues-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .features {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .main-header h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .stats-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .news-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-nav nav {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+            
+            .main-header {
+                padding: 120px 15px 40px;
+            }
+            
+            .main-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .league-card, .feature-card, .news-item {
+                padding: 20px;
+            }
+            
+            .stat-value {
+                font-size: 2.5rem;
+            }
+            
+            .match-teams {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .social-links {
+                gap: 15px;
+            }
+            
+            .social-links a {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .top-nav nav {
+                gap: 15px;
+            }
+            
+            .top-nav a {
+                font-size: 0.9rem;
+            }
+            
+            .main-header h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+            }
+            
+            .leagues-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .theme-toggle {
+                width: 45px;
+                height: 45px;
+                top: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Botão Modo Claro/Escuro -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+    <!-- Navegação Superior -->
+    <div class="top-nav">
+        <nav class="container">
+            <a href="../Html/Sobre Nos.html">Sobre Nós</a>
+            <a href="../Html/treinos.html">Treinos</a>
+            <a href="../Html/formacoes.html">Formações</a>
+            <a href="../Html/contactos.html">Contactos</a>
+        </nav>
+    </div>
+    
+    <!-- Conteúdo Principal -->
+    <div class="container">
+        <header class="main-header">
+            <div class="header-logo">
+                <!-- Logo GamePlan -->
+                <img src="../Html/png/logo.png" alt="GamePlan Logo">
+            </div>
+            <h1>GamePlan Football</h1>
+            <p class="subtitle">"Where Tactics Build Champions"</p>
+        </header>
+        
+        <!-- Ligas -->
+        <h2 class="section-title">Principais Ligas Europeias</h2>
+        <div class="leagues-grid">
+            <a href="../Html/6-ligas/ligaportugal.html" class="league-card floating">
+                <img src="../Html/png/liga_portugal_main.png" alt="Liga Portugal" class="league-logo">
+                <div class="league-name">Liga Portugal</div>
+                <div class="league-country">
+                    <i class="fas fa-flag"></i> Portugal
+                </div>
+                <div class="league-teams">
+                    <div class="team-badge" title="Benfica">BEN</div>
+                    <div class="team-badge" title="Porto">FCP</div>
+                    <div class="team-badge" title="Sporting">SCP</div>
+                    <div class="team-badge" title="Braga">SCB</div>
+                    <div class="team-badge" title="+14">+14</div>
+                </div>
+            </a>
+            
+            <a href="../Html/6-ligas/seriA.html" class="league-card floating" style="animation-delay: 0.5s;">
+                <img src="../Html/png/serieA.png" alt="Serie A" class="league-logo">
+                <div class="league-name">Serie A</div>
+                <div class="league-country">
+                    <i class="fas fa-flag"></i> Itália
+                </div>
+                <div class="league-teams">
+                    <div class="team-badge" title="Inter Milan">INT</div>
+                    <div class="team-badge" title="AC Milan">MIL</div>
+                    <div class="team-badge" title="Juventus">JUV</div>
+                    <div class="team-badge" title="Napoli">NAP</div>
+                    <div class="team-badge" title="+16">+16</div>
+                </div>
+            </a>
+            
+            <a href="../Html/6-ligas/premier.html" class="league-card floating" style="animation-delay: 1s;">
+                <img src="../Html/png/Premier League.png" alt="Premier League" class="league-logo">
+                <div class="league-name">Premier League</div>
+                <div class="league-country">
+                    <i class="fas fa-flag"></i> Inglaterra
+                </div>
+                <div class="league-teams">
+                    <div class="team-badge" title="Manchester City">MCI</div>
+                    <div class="team-badge" title="Liverpool">LIV</div>
+                    <div class="team-badge" title="Arsenal">ARS</div>
+                    <div class="team-badge" title="Chelsea">CHE</div>
+                    <div class="team-badge" title="+16">+16</div>
+                </div>
+            </a>
+            
+            <a href="../Html/6-ligas/laliga.html" class="league-card floating" style="animation-delay: 1.5s;">
+                <img src="../Html/png/LaLiga_logo2.png" alt="Laliga" class="league-logo">
+                <div class="league-name">La Liga</div>
+                <div class="league-country">
+                    <i class="fas fa-flag"></i> Espanha
+                </div>
+                <div class="league-teams">
+                    <div class="team-badge" title="Real Madrid">RMA</div>
+                    <div class="team-badge" title="Barcelona">BAR</div>
+                    <div class="team-badge" title="Atlético Madrid">ATM</div>
+                    <div class="team-badge" title="Sevilla">SEV</div>
+                    <div class="team-badge" title="+16">+16</div>
+                </div>
+            </a>
+
+            <a href="../Html/6-ligas/bundesliga.html" class="league-card floating" style="animation-delay: 2s;">
+                <img src="../Html/png/Bundesliga_logo.png" alt="Bundesliga" class="league-logo">
+                <div class="league-name">Bundesliga</div>
+                <div class="league-country">
+                    <i class="fas fa-flag"></i> Alemanha
+                </div>
+                <div class="league-teams">
+                    <div class="team-badge" title="Bayern Munich">FCB</div>
+                    <div class="team-badge" title="Borussia Dortmund">BVB</div>
+                    <div class="team-badge" title="Bayer Leverkusen">B04</div>
+                    <div class="team-badge" title="RB Leipzig">RBL</div>
+                    <div class="team-badge" title="+14">+14</div>
+                </div>
+            </a>
+
+            <a href="../Html/6-ligas/ligue1.html" class="league-card floating" style="animation-delay: 2.5s;">
+                <img src="../Html/png/ligue1_.png" alt="Ligue 1" class="league-logo">
+                <div class="league-name">Ligue 1</div>
+                <div class="league-country">
+                    <i class="fas fa-flag"></i> França
+                </div>
+                <div class="league-teams">
+                    <div class="team-badge" title="PSG">PSG</div>
+                    <div class="team-badge" title="Marseille">OM</div>
+                    <div class="team-badge" title="Lyon">OL</div>
+                    <div class="team-badge" title="Monaco">ASM</div>
+                    <div class="team-badge" title="+16">+16</div>
+                </div>
+            </a>
+        </div>
+        
+        <!-- Recursos do GamePlan -->
+        <h2 class="section-title">Recursos do GamePlan</h2>
+        <div class="features">
+            <div class="feature-card">
+                <h3>Análise Tática</h3>
+                <p>Estudos detalhados das formações e estratégias dos principais times e treinadores do mundo. Inclui análises de jogos, evolução tática e comparações entre sistemas de jogo.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Estatísticas Avançadas</h3>
+                <p>Dados completos sobre jogadores, times e ligas para uma análise aprofundada do futebol. Estatísticas em tempo real, comparativos históricos e projeções de desempenho.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Calendário de Jogos</h3>
+                <p>Acompanhe todos os jogos das principais competições em um calendário interativo. Notificações personalizadas, resultados em tempo real e estatísticas por partida.</p>
+            </div>
+        </div>
+        
+        <!-- Estatísticas em Destaque -->
+        <h2 class="section-title">Estatísticas em Destaque</h2>
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-value" id="gamesCount">0</div>
+                <div class="stat-label">Jogos Analisados</div>
+                <div class="stat-label">Esta Temporada</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="teamsCount">0</div>
+                <div class="stat-label">Equipas Registadas</div>
+                <div class="stat-label">Das Principais Ligas Europeias</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="scorersCount">0</div>
+                <div class="stat-label">Melhores Marcadores</div>
+                <div class="stat-label">Com mais de 10 Golos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">6</div>
+                <div class="stat-label">Países</div>
+                <div class="stat-label">Das Ligas Europeias</div>
+            </div>
+        </div>
+
+        <!-- Próximos Jogos -->
+        <div class="upcoming-matches">
+            <h2 class="section-title">Grandes Jogos</h2>
+
+            <div class="match glowing">
+                <div class="match-teams">
+                    <img src="../Html//png/Liverpool.png" alt="Manchester City" class="team-logo">
+                    <span>Liverpool</span>
+                    <span> vs</span>
+                    <span>Manchester City</span>
+                    <img src="../Html//png/Manchester City.png" alt="Liverpool" class="team-logo">
+                </div>
+                <div class="match-date">
+                    <t data-time="1770568200" data-format="f"></t>
+                </div>
+            </div>
+            
+            <div class="match glowing" style="animation-delay: 0.5s;">
+                <div class="match-teams">
+                    <img src="../Html//png/Barcelona.png" alt="Barcelona" class="team-logo">
+                    <span>Barcelona</span> 
+                    <span>vs</span>
+                    <span>Real Madrid</span>
+                    <img src="../Html//png/Real Madrid.png" alt="Real Madrid" class="team-logo">
+                </div>
+                <div class="match-date">
+                    <t data-time="1778439600" data-format="f"></t>
+                </div>
+            </div>
+            
+            <div class="match glowing" style="animation-delay: 1s;">
+                <div class="match-teams">
+                    <img src="../Html/png/Bayer Munich.png" alt="Bayern Munich" class="team-logo">
+                    <span>Bayern Munich</span>
+                    <span>vs</span>
+                    <span>Borussia Dortmund</span>
+                    <img src="../Html/png/Borussia Dortmund.png" alt="Borussia Dortmund" class="team-logo">    
+                </div>
+                <div class="match-date">
+                    <t data-time="1772299800" data-format="f"></t>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Últimas Notícias -->
+        <h2 class="section-title">Últimas Notícias</h2>
+        <div class="news-section">
+            <div class="news-item">
+                <div class="news-date">10 de Março, 2026</div>
+                <h3>Nova tática do PSG surpreende na Champions League</h3>
+                <p>O técnico do Paris Saint-Germain implementou uma formação inovadora que deixou a defesa adversária sem reação. A análise mostra como o 3-4-3 dinâmico está revolucionando o futebol europeu.</p>
+            </div>
+            <div class="news-item">
+                <div class="news-date">8 de Março, 2026</div>
+                <h3>Artur Silva é o jogador do mês na Premier League</h3>
+                <p>O brasileiro foi eleito o melhor jogador de fevereiro após marcar 5 gols e dar 3 assistências. O atacante de 24 anos tem sido fundamental para a campanha do seu time na luta pelo título.</p>
+            </div>
+            <div class="news-item">
+                <div class="news-date">5 de Março, 2026</div>
+                <h3>Bayer Leverkusen mantém invencibilidade recorde</h3>
+                <p>Equipe alemã alcança 40 jogos sem derrota, estabelecendo novo recorde no futebol europeu. A análise tática revela os segredos por trás dessa incrível sequência de resultados positivos.</p>
+            </div>
+        </div>
+        
+        <!-- Rodapé -->
+         <footer>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>GamePlan Football</h3>
+                    <p>O portal definitivo para análise tática, estatísticas e notícias do mundo do futebol. Cobertura completa das principais ligas europeias com foco em Portugal.</p><br>
+                    
+                    <div class="contact-info">
+                        <div><i class="fas fa-map-marker-alt"></i> Porto, Portugal</div>
+                        <div><i class="fas fa-phone"></i> +351 926 431 932</div>
+                        <div><i class="fas fa-envelope"></i> gameplanfootball1@gmail.com</div>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ligas</h3>
+                    <ul class="footer-links">
+                        <li><a href="../Html/6-ligas/ligaportugal.html"><i class="fas fa-chevron-right"></i> Liga Portugal</a></li>
+                        <li><a href="../Html/6-ligas/premier.html"><i class="fas fa-chevron-right"></i> Premier League</a></li>
+                        <li><a href="../Html/6-ligas/laliga.html"><i class="fas fa-chevron-right"></i> La Liga</a></li>
+                        <li><a href="../Html/6-ligas/seriA.html"><i class="fas fa-chevron-right"></i> Serie A</a></li>
+                        <li><a href="../Html/6-ligas/bundesliga.html"><i class="fas fa-chevron-right"></i> Bundesliga</a></li>
+                        <li><a href="../Html/6-ligas/ligue1.html"><i class="fas fa-chevron-right"></i> Ligue 1</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Recursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="../Html/main.html"><i class="fas fa-chevron-right"></i> Página Principal</a></li>
+                        <li><a href="../Html/contactos.html"><i class="fas fa-chevron-right"></i> Envie o Seu Feedback</a></li>
+                        <li><a href="../Html/treinos.html"><i class="fas fa-chevron-right"></i> Treinos</a></li>
+                        <li><a href="../Html/formacoes.html"><i class="fas fa-chevron-right"></i> Simulador de Formações</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-envelope"></i> gameplanfootball1@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> +351 938 815 026</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Porto, Portugal</a></li>
+                        <li><a href="../Html/Sobre Nos.html"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Redes Sociais com logos -->
+            <div class="social-links">
+                <a href="https://www.instagram.com/gameplanfootball1?igsh=OXY3eW13NnRqcGhi" target="_blank">
+                    <img src="../Html/png/Instagram_icon.png" alt="Instagram">
+                    Instagram
+                </a>
+                
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gameplanfootball1@gmail.com" target="_blank" class="social-icon" title="Enviar Email">
+            <i class="fas fa-envelope"></i>
+             E-Mail
+        </a>
+            </div>
+            
+            <div class="copyright">
+                <p>© <span>2026</span> GamePlan Football - Todos os direitos reservados | Porto, Portugal</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Sistema de Modo Claro/Escuro
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            
+            if (document.body.classList.contains('light-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('gameplan-theme', 'light');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('gameplan-theme', 'dark');
+            }
+        });
+        
+        // Verificar preferência salva
+        const savedTheme = localStorage.getItem('gameplan-theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        // Animar contadores de estatísticas
+        function animateCounter(elementId, finalValue, duration = 2000) {
+            const element = document.getElementById(elementId);
+            const startValue = 0;
+            const increment = finalValue / (duration / 16); // 60fps
+            let currentValue = startValue;
+            
+            const timer = setInterval(() => {
+                currentValue += increment;
+                if (currentValue >= finalValue) {
+                    element.textContent = finalValue.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(currentValue).toLocaleString();
+                }
+            }, 16);
+        }
+        
+        // Iniciar animação dos contadores quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animar os contadores
+            animateCounter('gamesCount', 1247);
+            animateCounter('teamsCount', 114);
+            animateCounter('scorersCount', 56);
+            
+            // Converter timestamps das datas dos jogos
+            document.querySelectorAll("t[data-time]").forEach(el => {
+                const timestamp = parseInt(el.getAttribute("data-time"), 10);
+                const formato = el.getAttribute("data-format");
+            
+                const date = new Date(timestamp * 1000);
+            
+                // Opções de formatação
+                let options = {
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    timeZoneName: "short"
+                };
+            
+                // Se o formato for "f", inclui o dia da semana
+                if (formato === "f") {
+                    options.weekday = "long";
+                }
+            
+                // Mostra a data formatada na timezone local do visitante
+                el.textContent = date.toLocaleString('pt-PT', options);
+            });
+            
+            // Adicionar efeito de brilho aleatório nos cards
+            const cards = document.querySelectorAll('.league-card, .feature-card, .stat-card, .match, .news-item');
+            
+            setInterval(() => {
+                cards.forEach(card => {
+                    if (Math.random() > 0.9) {
+                        card.style.boxShadow = '0 20px 50px rgba(212, 175, 55, 0.3)';
+                        card.style.borderColor = 'rgba(212, 175, 55, 0.5)';
+                        
+                        setTimeout(() => {
+                            card.style.boxShadow = '';
+                            card.style.borderColor = '';
+                        }, 1000);
+                    }
+                });
+            }, 3000);
+            
+            // Adicionar efeito de hover dinâmico nos cards de liga
+            const leagueCards = document.querySelectorAll('.league-card');
+            leagueCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const teamBadges = this.querySelectorAll('.team-badge');
+                    teamBadges.forEach((badge, index) => {
+                        setTimeout(() => {
+                            badge.style.transform = 'scale(1.2)';
+                            badge.style.background = 'var(--gold)';
+                            badge.style.color = 'var(--black)';
+                        }, index * 100);
+                    });
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const teamBadges = this.querySelectorAll('.team-badge');
+                    teamBadges.forEach((badge, index) => {
+                        setTimeout(() => {
+                            badge.style.transform = 'scale(1)';
+                            badge.style.background = 'var(--dark-gray)';
+                            badge.style.color = 'var(--light-gray)';
+                        }, index * 50);
+                    });
+                });
+            });
+        });
+        
+        // Navegação suave para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Adicionar ano atual no rodapé
+        document.addEventListener('DOMContentLoaded', function() {
+            const yearSpan = document.querySelector('.copyright span');
+            if (yearSpan && yearSpan.textContent === '2026') {
+
+            }
+        });
+    </script>
+</body>
+</html>

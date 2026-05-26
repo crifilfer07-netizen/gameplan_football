@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamePlan Football - Contactos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --light-gold: #F4D03F;
+            --dark-gold: #B8860B;
+            --black: #0A0A0A;
+            --dark-gray: #1A1A1A;
+            --medium-gray: #2A2A2A;
+            --light-gray: #CCCCCC;
+            --white: #F5F5F5;
+            --card-bg: rgba(26, 26, 26, 0.8);
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --sidebar-width: 300px;
+        }
+        
+        /* Modo Claro */
+        .light-mode {
+            --gold: #B8860B;
+            --light-gold: #D4AF37;
+            --dark-gold: #8B6914;
+            --black: #F5F5F5;
+            --dark-gray: #E0E0E0;
+            --medium-gray: #CCCCCC;
+            --light-gray: #333333;
+            --white: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.9);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 20%);
+            transition: var(--transition);
+        }
+        
+        body.sidebar-open {
+            overflow: hidden;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Sidebar Menu */
+        .sidebar-menu {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: var(--dark-gray);
+            border-left: 1px solid rgba(212, 175, 55, 0.3);
+            z-index: 1002;
+            transition: right 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        
+        .sidebar-menu.open {
+            right: 0;
+        }
+        
+        .sidebar-header {
+            padding: 25px 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .sidebar-header h3 {
+            color: var(--gold);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+        }
+        
+        .close-sidebar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--medium-gray);
+            border: none;
+            color: var(--gold);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .close-sidebar:hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: rotate(90deg);
+        }
+        
+        .sidebar-content {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+        
+        .sidebar-section h4 {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 8px;
+        }
+        
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+        
+        .sidebar-item i {
+            color: var(--gold);
+            width: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .sidebar-item span {
+            flex: 1;
+        }
+        
+        .sidebar-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateX(-5px);
+        }
+        
+        .sidebar-item.active {
+            background: rgba(212, 175, 55, 0.15);
+            border-left: 3px solid var(--gold);
+        }
+        
+        /* Theme Toggle dentro da sidebar */
+        .theme-toggle-sidebar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            background: var(--medium-gray);
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .theme-toggle-sidebar p {
+            color: var(--white);
+            font-weight: 500;
+        }
+        
+        .toggle-switch {
+            width: 50px;
+            height: 26px;
+            background: var(--dark-gray);
+            border-radius: 30px;
+            position: relative;
+            cursor: pointer;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: var(--gold);
+            border-radius: 50%;
+            top: 1px;
+            left: 1px;
+            transition: var(--transition);
+        }
+        
+        .light-mode .toggle-switch::after {
+            left: 27px;
+        }
+        
+        .toggle-switch i {
+            position: absolute;
+            font-size: 0.8rem;
+            z-index: 1;
+        }
+        
+        .toggle-switch .fa-sun {
+            right: 6px;
+            top: 5px;
+            color: var(--black);
+            opacity: 0.3;
+        }
+        
+        .toggle-switch .fa-moon {
+            left: 6px;
+            top: 5px;
+            color: var(--white);
+            opacity: 0.3;
+        }
+        
+        .light-mode .toggle-switch .fa-sun {
+            opacity: 1;
+        }
+        
+        .light-mode .toggle-switch .fa-moon {
+            opacity: 0.3;
+        }
+        
+        /* Badge para notificações */
+        .sidebar-badge {
+            background: var(--gold);
+            color: var(--black);
+            padding: 3px 8px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: auto;
+        }
+        
+        /* Botão Menu Principal */
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--dark-gray);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--gold);
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .menu-toggle:hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: scale(1.1);
+        }
+        
+        /* Botão de alternar tema */
+        .theme-toggle {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--dark-gray);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--gold);
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .theme-toggle:hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: scale(1.1);
+        }
+        
+        .light-mode .theme-toggle {
+            background: var(--light-gray);
+            color: var(--dark-gold);
+        }
+        
+        /* Navegação Superior */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(10, 10, 10, 0.95);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        
+        .light-mode .top-nav {
+            background-color: rgba(245, 245, 245, 0.95);
+        }
+        
+        .top-nav nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .top-nav a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+            letter-spacing: 0.5px;
+        }
+        
+        .top-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        .top-nav a:hover {
+            color: var(--gold);
+        }
+        
+        .top-nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Ajuste para o botão de menu não sobrepor o nav */
+        @media (max-width: 768px) {
+            .top-nav nav {
+                padding-right: 60px;
+            }
+        }
+        
+        /* Cabeçalho Principal */
+        .main-header {
+            text-align: center;
+            padding: 140px 20px 60px;
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .main-header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            color: var(--light-gray);
+            margin-bottom: 30px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .header-logo {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(244, 208, 63, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            padding: 20px;
+        }
+        
+        .header-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+        }
+        
+        /* Títulos de Seção */
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin: 60px 0 40px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        
+        /* Layout de Contactos (mantido do código original) */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+        
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .contact-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+        }
+        
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--light-gold));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s;
+        }
+        
+        .contact-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(244, 208, 63, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--gold);
+            font-size: 1.8rem;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .contact-card h3 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .contact-detail i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        
+        .contact-detail p {
+            color: var(--light-gray);
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        
+        .contact-detail a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .contact-detail a:hover {
+            color: var(--gold);
+        }
+        
+        .hours-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .hours-list .day {
+            color: var(--light-gray);
+        }
+        
+        .hours-list .time {
+            color: var(--gold);
+            font-weight: 500;
+        }
+        
+        .contact-form-container {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--light-gold));
+        }
+        
+        .form-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .form-header h3 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-header p {
+            color: var(--light-gray);
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .form-group label {
+            color: var(--light-gray);
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+        
+        .form-group label span {
+            color: var(--gold);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 15px 20px;
+            background: var(--dark-gray);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+        
+        .submit-btn {
+            background: linear-gradient(90deg, var(--gold), var(--light-gold));
+            color: var(--black);
+            border: none;
+            padding: 18px 40px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+        
+        .map-section {
+            margin-bottom: 80px;
+        }
+        
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            height: 450px;
+            position: relative;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.9);
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .light-mode .map-overlay {
+            background: rgba(245, 245, 245, 0.9);
+        }
+        
+        .map-info h4 {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .map-info p {
+            color: var(--light-gray);
+            font-size: 1rem;
+        }
+        
+        .map-btn {
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .map-btn:hover {
+            background: var(--light-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .faq-section {
+            margin-bottom: 80px;
+        }
+        
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .faq-item:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.1);
+        }
+        
+        .faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .faq-question h4 {
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .faq-question i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+            color: var(--light-gray);
+            line-height: 1.7;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 30px 25px;
+            max-height: 500px;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+      
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+            position: relative;
+            padding-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gold);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+        
+        .contact-info {
+            color: var(--light-gray);
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .contact-info i {
+            color: var(--gold);
+            width: 20px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .social-links a:hover {
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .social-links img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            filter: brightness(0.8);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+        
+        .copyright span {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        @media (max-width: 992px) {
+            .main-header h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .contact-form-container {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-nav nav {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+            
+            .main-header {
+                padding: 120px 15px 40px;
+            }
+            
+            .main-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .contact-card, .contact-form-container {
+                padding: 20px;
+            }
+            
+            .map-container {
+                height: 350px;
+            }
+            
+            .map-overlay {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .sidebar-menu {
+                width: 280px;
+            }
+            
+            .theme-toggle {
+                top: 70px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .top-nav nav {
+                gap: 15px;
+            }
+            
+            .top-nav a {
+                font-size: 0.9rem;
+            }
+            
+            .main-header h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+            }
+            
+            .menu-toggle {
+                width: 45px;
+                height: 45px;
+                top: 15px;
+                right: 15px;
+            }
+            
+            .theme-toggle {
+                top: 65px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+            }
+            
+            .sidebar-menu {
+                width: 260px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Sidebar Menu -->
+    <div class="sidebar-menu" id="sidebarMenu">
+        <div class="sidebar-header">
+            <h3>Menu</h3>
+            <button class="close-sidebar" id="closeSidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="sidebar-content">
+            <!-- Modo Claro/Escuro -->
+            <div class="sidebar-section">
+                <h4>Aparência</h4>
+                <div class="theme-toggle-sidebar">
+                    <p><i class="fas fa-palette"></i> Modo Escuro</p>
+                    <div class="toggle-switch" id="sidebarThemeToggle">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navegação Principal -->
+            <div class="sidebar-section">
+                <h4>Navegação</h4>
+                <a href="main.html" class="sidebar-item">
+                    <i class="fas fa-home"></i>
+                    <span>Início</span>
+                </a>
+                <a href="../Html/Sobre Nos.html" class="sidebar-item">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Sobre Nós</span>
+                </a>
+                <a href="../Html/treinos.html" class="sidebar-item">
+                    <i class="fas fa-futbol"></i>
+                    <span>Treinos</span>
+                </a>
+                <a href="../Html/formacoes.html" class="sidebar-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Formações</span>
+                </a>
+                <a href="#" class="sidebar-item active">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contactos</span>
+                </a>
+            </div>
+            
+            <!-- Liga -->
+            <div class="sidebar-section">
+                <h4>Ligas</h4>
+                <a href="../Html/6-ligas/ligaportugal.html" class="sidebar-item">
+                    <i class="fas fa-flag"></i>
+                    <span>Liga Portugal</span>
+                </a>
+                <a href="../Html/6-ligas/premier.html" class="sidebar-item">
+                    <i class="fas fa-flag"></i>
+                    <span>Premier League</span>
+                </a>
+                <a href="../Html/6-ligas/laliga.html" class="sidebar-item">
+                    <i class="fas fa-flag"></i>
+                    <span>La Liga</span>
+                </a>
+                <a href="../Html/6-ligas/seriA.html" class="sidebar-item">
+                    <i class="fas fa-flag"></i>
+                    <span>Serie A</span>
+                </a>
+            </div>
+            
+            <!-- Recursos -->
+            <div class="sidebar-section">
+                <h4>Recursos</h4>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Análise Tática</span>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Estatísticas</span>
+                    <span class="sidebar-badge">Novo</span>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Calendário</span>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-database"></i>
+                    <span>Base de Dados</span>
+                </a>
+            </div>
+            
+            <!-- Conta -->
+            <div class="sidebar-section">
+                <h4>Conta</h4>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-user"></i>
+                    <span>Perfil</span>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Configurações</span>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Sair</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão de alternar tema -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+    <!-- Navegação Superior -->
+    <div class="top-nav">
+        <nav class="container">
+            <a href="../Html/main.html">Página Principal</a>
+            <a href="../Html/Sobre Nos.html">Sobre Nós</a>
+            <a href="../Html/treinos.html">Treinos</a>
+            <a href="../Html/formacoes.html">Formações</a>
+        </nav>
+    </div>
+    
+    <!-- Conteúdo Principal -->
+    <div class="container">
+        <header class="main-header">
+            <div class="header-logo">
+                <!-- Logo GamePlan -->
+                <img src="../Html/png/logo.png" alt="GamePlan Logo">
+            </div>
+            <h1>Contactos</h1>
+            <p class="subtitle">Entre em contacto connosco</p>
+        </header>
+        
+        <!-- Informações e Formulário de Contacto -->
+        <div class="contact-container">
+            <!-- Informações de Contacto -->
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Localização</h3>
+                    <div class="contact-detail">
+                        <i class="fas fa-location-dot"></i>
+                        <p>R. do Bonjardim 497, 4000-125 Porto, Portugal</p>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-directions"></i>
+                        <p>Estacionamento disponível no local</p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Telefones</h3>
+                    <div class="contact-detail">
+                        <i class="fas fa-phone"></i>
+                        <p><a href="tel:+351926431932">+351 926 431 932</a></p>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-mobile-alt"></i>
+                        <p><a href="tel:+351987654321"> +351 938 815 026</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email e Horário</h3>
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i>
+                        <p><a href="mailto:info@gameplan.com">gameplanfootball1@gmail.com</a></p>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-clock"></i>
+                        <p>Horário de Atendimento:</p>
+                    </div>
+                    <ul class="hours-list">
+                        <li><span class="day">Segunda - Sexta</span> <span class="time">9:00 - 18:00</span></li>
+                        <li><span class="day">Sábado</span> <span class="time">10:00 - 14:00</span></li>
+                        <li><span class="day">Domingo</span> <span class="time">Fechado</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Formulário de Contacto -->
+            <div class="contact-form-container">
+                <div class="form-header">
+                    <h3>Envie-nos uma mensagem</h3>
+                    <p>Responderemos no prazo máximo de 48 horas úteis</p>
+                </div>
+                
+                <form action="enviar.php"  method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Nome Completo <span>*</span></label>
+                            <input type="text" id="name" name="name" required placeholder="Digite seu nome completo">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email <span>*</span></label>
+                            <input type="email" id="email" name="email" required placeholder="seu.email@exemplo.com">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+351 123 456 789">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Assunto <span>*</span></label>
+                            <select id="subject" name="subject" required>
+                                <option value="" disabled selected>Selecione um assunto</option>
+                                <option value="suporte">Suporte Técnico</option>
+                                <option value="parceria">Parcerias e Publicidade</option>
+                                <option value="sugestao">Sugestões e Feedback</option>
+                                <option value="dados">Correção de Dados</option>
+                                <option value="outro">Outro Assunto</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensagem <span>*</span></label>
+                        <textarea id="message" name="message" required placeholder="Digite sua mensagem aqui..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+       <!-- Mapa -->
+<div class="map-section">
+    <h2 class="section-title">Encontre-nos</h2>
+    
+    <div class="map-container">
+        
+        <!-- MAPA REAL -->
+        <iframe 
+            src="https://www.google.com/maps?q=Rua+do+Bonjardim+497,+Porto&output=embed"
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
+
+        <div class="map-overlay">
+            <div class="map-info">
+                <h4>GamePlan Football HQ</h4>
+                <p>Rua do Bonjardim 497, 4000-125 Porto</p>
+            </div>
+            
+            <a href="https://maps.google.com/?q=Rua+do+Bonjardim+497,+Porto,+Portugal" target="_blank" class="map-btn">
+                <i class="fas fa-directions"></i> Ver Rotas
+            </a>
+        </div>
+    </div>
+</div>
+        
+        <!-- FAQ -->
+        <div class="faq-section">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Quanto tempo leva para receber uma resposta?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Normalmente respondemos a todas as consultas dentro de 24-48 horas úteis. Para questões urgentes, recomendamos o contacto telefónico durante o horário comercial.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Posso visitar as instalações da GamePlan?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, as nossas instalações estão abertas para visitas mediante marcação prévia. Contacte-nos para agendar uma visita e conhecer a nossa equipa e operação.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Como posso tornar-me parceiro ou patrocinador?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Temos várias opções de parceria e patrocínio disponíveis. Envie-nos uma mensagem através do formulário selecionando "Parcerias e Publicidade" no assunto, e nossa equipa comercial entrará em contacto consigo.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Como posso reportar um erro nos dados do site?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Se encontrar algum erro nos dados estatísticos ou informações do site, por favor utilize o formulário de contacto selecionando "Correção de Dados" no assunto. Inclua o máximo de detalhes possível para que possamos corrigir rapidamente.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Oferecem serviços de análise tática para equipas?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, fornecemos serviços profissionais de análise tática para equipas de todos os níveis. Entre em contacto connosco para discutir as necessidades específicas da sua equipa e solicitar um orçamento personalizado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Rodapé -->
+         <footer>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>GamePlan Football</h3>
+                    <p>O portal definitivo para análise tática, estatísticas e notícias do mundo do futebol. Cobertura completa das principais ligas europeias com foco em Portugal.</p><br>
+                    
+                    <div class="contact-info">
+                        <div><i class="fas fa-map-marker-alt"></i> Porto, Portugal</div>
+                        <div><i class="fas fa-phone"></i> +351 926 431 932</div>
+                        <div><i class="fas fa-envelope"></i> gameplanfootball1@gmail.com</div>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ligas</h3>
+                    <ul class="footer-links">
+                        <li><a href="../Html/6-ligas/ligaportugal.html"><i class="fas fa-chevron-right"></i> Liga Portugal</a></li>
+                        <li><a href="../Html/6-ligas/premier.html"><i class="fas fa-chevron-right"></i> Premier League</a></li>
+                        <li><a href="../Html/6-ligas/laliga.html"><i class="fas fa-chevron-right"></i> La Liga</a></li>
+                        <li><a href="../Html/6-ligas/seriA.html"><i class="fas fa-chevron-right"></i> Serie A</a></li>
+                        <li><a href="../Html/6-ligas/bundesliga.html"><i class="fas fa-chevron-right"></i> Bundesliga</a></li>
+                        <li><a href="../Html/6-ligas/ligue1.html"><i class="fas fa-chevron-right"></i> Ligue 1</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Recursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="../Html/main.html"><i class="fas fa-chevron-right"></i> Página Principal</a></li>
+                        <li><a href="../Html/contactos.html"><i class="fas fa-chevron-right"></i> Envie o Seu Feedback</a></li>
+                        <li><a href="../Html/treinos.html"><i class="fas fa-chevron-right"></i> Treinos</a></li>
+                        <li><a href="../Html/formacoes.html"><i class="fas fa-chevron-right"></i> Simulador de Formações</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-envelope"></i> gameplanfootball1@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> +351 938 815 026</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Porto, Portugal</a></li>
+                        <li><a href="../Html/Sobre Nos.html"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Redes Sociais com logos -->
+            <div class="social-links">
+                <a href="https://www.instagram.com/gameplanfootball1?igsh=OXY3eW13NnRqcGhi" target="_blank">
+                    <img src="../Html/png/Instagram_icon.png" alt="Instagram">
+                    Instagram
+                </a>
+                
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gameplanfootball1@gmail.com" target="_blank" class="social-icon" title="Enviar Email">
+            <i class="fas fa-envelope"></i>
+             E-Mail
+        </a>
+            </div>
+            
+            <div class="copyright">
+                <p>© <span>2026</span> GamePlan Football - Todos os direitos reservados | Porto, Portugal</p>
+            </div>
+        </footer>
+    </div>
+    <!-- Scripts -->
+    <script>
+        // Elementos
+        const themeToggle = document.getElementById('themeToggle');
+        const sidebarThemeToggle = document.getElementById('sidebarThemeToggle');
+        const body = document.body;
+        
+        // Verificar se há preferência salva
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        // Função para alternar tema
+        function toggleTheme() {
+            body.classList.toggle('light-mode');
+            
+            // Atualizar ícone do botão
+            if (body.classList.contains('light-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        
+        // Event listeners para alternar tema
+        themeToggle.addEventListener('click', toggleTheme);
+        
+        if (sidebarThemeToggle) {
+            sidebarThemeToggle.addEventListener('click', toggleTheme);
+        }
+        
+        // Menu sidebar (se existir)
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebarMenu = document.getElementById('sidebarMenu');
+        const closeSidebar = document.getElementById('closeSidebar');
+        const overlay = document.getElementById('overlay');
+        
+        if (menuToggle && sidebarMenu && closeSidebar && overlay) {
+            menuToggle.addEventListener('click', function() {
+                sidebarMenu.classList.add('open');
+                overlay.classList.add('active');
+                body.classList.add('sidebar-open');
+            });
+            
+            closeSidebar.addEventListener('click', function() {
+                sidebarMenu.classList.remove('open');
+                overlay.classList.remove('active');
+                body.classList.remove('sidebar-open');
+            });
+            
+            overlay.addEventListener('click', function() {
+                sidebarMenu.classList.remove('open');
+                overlay.classList.remove('active');
+                body.classList.remove('sidebar-open');
+            });
+        }
+        
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

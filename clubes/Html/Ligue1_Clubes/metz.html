@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title> FC Metz</title>
+    <style>
+        body {
+            background-color:white;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color:white;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color:#6E0F12;
+        }
+
+        .header .logo-placeholder {
+
+            width: 100%;
+            height: 1px;
+        }
+
+        .hr .white-separator {
+            border: none;
+            height: 6px;
+            background-color: white;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color:#6E0F12;
+            padding: 20px;
+            border-radius: 10px;
+            color:white;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid #6E0F12;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        /* Responsividade simples */
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.white-separator {
+                grid-column: 2;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>FC Metz</h1>
+        <hr class="white-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Metz1.png">
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador: <a href="https://www.zerozero.pt/treinador/benoit-tavenot/31954?search=1" target="_blank">Benoit Tavenot</a></strong></p>
+            <p class="texto-justificado">Benoit Tavenot é um mestre da organização tática,destaca-se no panorama francês como um treinador capaz de catalisar o talento individual em prol do coletivo, elevando a competitividade de equipas em contextos de profunda reestruturação.</p>
+
+            <img src="../png/benoit_tavenot.png" alt="Treinador">
+
+            <p><strong>Estádio: Stade Saint-Symphorien</strong></p>
+            <p class="texto-justificado">O Stade Saint-Symphorien é um estádio de futebol com uma história centenária, localizado numa ilha no rio Mosela, em Metz, França, e é a casa do FC Metz desde a fundação do clube.
+            </p>
+
+            <img src="../png/stade_saint_symphorien.jpg" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">No FC Metz, o estilo de jogo de Benoît Tavenot reflete a sua escola de formação e a influência de anos como adjunto de Frédéric Antonetti. O seu Metz é caracterizado por ser uma equipa pragmática, organizada e vertical.</p>
+
+            <p>"Le Feu Sacré!"</p>
+        </div>
+    </div>
+
+</body>
+</html>

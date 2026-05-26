@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La liga</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        a {
+            color:white;
+            text-decoration: none;
+        }
+          
+        a:hover {
+            color:white;
+            text-decoration: underline;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #FF4B44;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px #FF4B44;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+           .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 15px 0 25px 0;
+        }
+        
+        .nav-btn {
+            background-color:#FF4B44;
+            color: white;
+            border: 1px solid white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.25s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nav-btn:hover {
+            background-color: #FF4B44;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px #FF4B44;
+        }
+        
+        .nav-btn.active {
+            background-color: #FF4B44;
+            border-color: #FF4B44;
+        }
+        
+        .clubs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .club-card {
+            background-color:#FF4B44;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .club-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px#FF4B44;
+        }
+        
+        .club-logo {
+            max-width: 100%;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        
+        .club-name {
+            font-weight: bold;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: black;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .clubs-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .clubs-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 15px;
+            }
+            
+            .club-logo {
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+           <img src="../png/LaLiga_logo2.png" alt="Premier League" class="club-logo">
+
+           <h1>La Liga 25/26</h1>
+           
+                       <div class="nav-buttons">
+                <a href="../main.html" class="nav-btn">Página Principal</a>
+                <a href="../6-ligas/ligaportugal.html" class="nav-btn">Liga Portugal</a>
+                <a href="../6-ligas/premier.html" class="nav-btn">Premier League</a>
+                <a href="../6-ligas/seriA.html" class="nav-btn">Serie A</a>
+                <a href="../6-ligas/bundesliga.html" class="nav-btn">Bundesliga</a>
+                <a href="../6-ligas/ligue1.html" class="nav-btn">Ligue 1</a>
+            </div>
+        </header>
+        </header>
+            <div class="clubs-grid">
+                <a href="../LaLiga_Clubes/alaves.html" class="club-card">
+                    <img src="../png/Alaves.png" alt="Alaves" class="club-logo">
+                    <div class="club-name">Alavés</div>
+                </a>
+
+                <a href="../LaLiga_Clubes/bilbao.html" class="club-card">
+                    <img src="../png/Athletic Bilbao.png" alt="Athletic Bilbao" class="club-logo">
+                    <div class="club-name">Athletic Bilbão</div>
+                </a>
+            
+                <a href="../LaLiga_Clubes/atleticomadrid.html" class="club-card">
+                    <img src="../png/Atlético de Madrid.png" alt="Atletico Madrid" class="club-logo">
+                    <div class="club-name">Atlético Madrid</div>
+                </a>
+            
+                <a href="../LaLiga_Clubes/barcelona.html" class="club-card">
+                    <img src="../png/Barcelona.png" alt="Barcelona" class="club-logo">
+                    <div class="club-name">Barcelona</div>
+                </a>
+            
+                <a href="../LaLiga_Clubes/betis.html" class="club-card">
+                    <img src="../png/Betis.png" alt="Betis" class="club-logo">
+                    <div class="club-name">Bétis</div>
+                </a>
+            
+                <a href="../LaLiga_Clubes/celtavigo.html" class="club-card">
+                    <img src="../png/Celta de Vigo.png" alt="Celta Vigo" class="club-logo">
+                    <div class="club-name">Celta Vigo</div>
+                </a>
+            
+                <a href="../LaLiga_Clubes/elche.html" class="club-card">
+                    <img src="../png/Elche.png" alt="Elche" class="club-logo">
+                    <div class="club-name">Elche</div>
+                </a>
+            
+                <a href="../LaLiga_Clubes/espanyol.html" class="club-card">
+                    <img src="../png/Espanyol.png" alt="Espanyol" class="club-logo">
+                    <div class="club-name">Espanyol</div>
+                </a>
+            
+                <a href="../LaLiga_Clubes/getafe.html" class="club-card">
+                    <img src="../png/Getafe.png" alt="Getafe" class="club-logo">
+                    <div class="club-name">Getafe</div>
+                </a>
+            
+                <a href="../LaLiga_Clubes/girona.html" class="club-card">
+                    <img src="../png/Girona.png" alt="Girona" class="club-logo">
+                    <div class="club-name">Girona</div>
+                </a>
+            
+                <a href="../LaLiga_Clubes/levante.html" class="club-card">
+                    <img src="../png/Levante.png" alt="Levante" class="club-logo">
+                    <div class="club-name">Levante</div>
+                </a>
+            
+                <a href="../LaLiga_Clubes/mallorca.html" class="club-card">
+                    <img src="../png/Mallorca.png" alt="Mallorca" class="club-logo">
+                    <div class="club-name">Mallorca</div>
+                </a>
+
+                <a href="../LaLiga_Clubes/osasuna.html" class="club-card">
+                    <img src="../png/Osasuna.png" alt="Osasuna" class="club-logo">
+                    <div class="club-name">Osasuna</div>
+                </a>
+            
+                <a href="../LaLiga_Clubes/realmadrid.html" class="club-card">
+                    <img src="../png/Real Madrid.png" alt="Real Madrid" class="club-logo">
+                    <div class="club-name">Real Madrid</div>
+                </a>
+                
+                <a href="../LaLiga_Clubes/realoviedo.html" class="club-card">
+                    <img src="../png/Real Oviedo.png" alt="Real Oviedo" class="club-logo">
+                    <div class="club-name">Real Oviedo</div>
+                </a>
+
+                <a href="../LaLiga_Clubes/realsociedad.html" class="club-card">
+                    <img src="../png/Real Sociedad.png" alt="Real Sociedad" class="club-logo">
+                    <div class="club-name">Real Sociedad</div>
+                </a>
+            
+                <a href="../LaLiga_Clubes/rayovallecano.html" class="club-card">
+                    <img src="../png/Rayo Vallecano.png" alt="Rayo Vallecano" class="club-logo">
+                    <div class="club-name">Rayo Vallecano</div>
+                </a>
+            
+                <a href="../LaLiga_Clubes/sevilha.html" class="club-card">
+                    <img src="../png/Sevilha.png" alt="Sevilha" class="club-logo">
+                    <div class="club-name">Sevilha</div>
+                </a>
+            
+                <a href="../LaLiga_Clubes/valencia.html" class="club-card">
+                    <img src="../png/Valencia.png" alt="Valencia" class="club-logo">
+                    <div class="club-name">Valencia</div>
+                </a>
+                <a href="../LaLiga_Clubes/villarreal.html" class="club-card">
+                    <img src="../png/Villarreal.png" alt="Villarreal" class="club-logo">
+                    <div class="club-name">Villarreal</div>
+                </a>
+            </div>            
+        </div>
+        
+        <footer>
+            <p>© 2026 Clubes Espanhois - Todos os direitos reservados</p>
+        </footer>
+    </div>
+</body>
+</html>

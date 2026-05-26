@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamePlan - Análise Tática de Futebol</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --light-gold: #F4D03F;
+            --dark-gold: #B8860B;
+            --black: #0A0A0A;
+            --dark-gray: #1A1A1A;
+            --medium-gray: #2A2A2A;
+            --light-gray: #CCCCCC;
+            --white: #F5F5F5;
+        }
+        
+        /* Modo Claro */
+        .light-mode {
+            --gold: #B8860B;
+            --light-gold: #D4AF37;
+            --dark-gold: #8B6914;
+            --black: #F5F5F5;
+            --dark-gray: #E0E0E0;
+            --medium-gray: #CCCCCC;
+            --light-gray: #333333;
+            --white: #0A0A0A;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 20%);
+            transition: background-color 0.5s, color 0.5s;
+        }
+        
+        /* Botão de Tema */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--dark-gray);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--gold);
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+            background: var(--gold);
+            color: var(--black);
+        }
+        
+        /* Navegação */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(10, 10, 10, 0.97);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+            backdrop-filter: blur(10px);
+            transition: all 0.5s;
+        }
+        
+        .light-mode nav {
+            background-color: rgba(245, 245, 245, 0.97);
+            border-bottom: 1px solid rgba(184, 134, 11, 0.25);
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Conteúdo principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 140px 20px 80px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.8rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--light-gray);
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        .mission {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            max-width: 700px;
+            margin: 40px auto 0;
+            padding: 25px;
+            background: rgba(26, 26, 26, 0.6);
+            border-radius: 15px;
+            border-left: 4px solid var(--gold);
+            line-height: 1.7;
+            font-weight: 300;
+            transition: all 0.5s;
+        }
+        
+        .light-mode .mission {
+            background: rgba(224, 224, 224, 0.6);
+        }
+        
+        /* Cards de perfil */
+        .profiles {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            margin-bottom: 100px;
+        }
+        
+        .profile-card {
+            width: 100%;
+            max-width: 500px;
+            background: linear-gradient(145deg, var(--dark-gray), #151515);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s, box-shadow 0.4s, background 0.5s;
+            position: relative;
+        }
+        
+        .light-mode .profile-card {
+            background: linear-gradient(145deg, #E0E0E0, #F0F0F0);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+            border-color: rgba(212, 175, 55, 0.35);
+        }
+        
+        .profile-header {
+            padding: 30px 30px 20px;
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.08), rgba(244, 208, 63, 0.04));
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s;
+        }
+        
+        .light-mode .profile-header {
+            background: linear-gradient(90deg, rgba(184, 134, 11, 0.08), rgba(212, 175, 55, 0.04));
+        }
+        
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .profile-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-role {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            position: relative;
+            z-index: 1;
+            font-weight: 400;
+        }
+        
+        .profile-content {
+            padding: 25px 30px;
+            position: relative;
+        }
+        
+        .profile-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        
+        .profile-desc {
+            color: var(--light-gray);
+            line-height: 1.7;
+            font-size: 1.05rem;
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+        
+        .profile-quote {
+            margin-top: 20px;
+            padding-left: 20px;
+            border-left: 3px solid var(--gold);
+            font-style: italic;
+            color: var(--light-gray);
+            font-weight: 300;
+        }
+        
+        /* Elemento interativo */
+        .interactive-element {
+            text-align: center;
+            margin: 40px 0 80px;
+            padding: 40px 30px;
+            background: rgba(26, 26, 26, 0.7);
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s;
+        }
+        
+        .light-mode .interactive-element {
+            background: rgba(224, 224, 224, 0.7);
+        }
+        
+        .interactive-element::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
+            z-index: 0;
+        }
+        
+        .interactive-element > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .interactive-title {
+            color: var(--gold);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .gold-btn {
+            background: linear-gradient(90deg, var(--dark-gold), var(--gold));
+            color: var(--black);
+            border: none;
+            padding: 16px 45px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            margin-top: 10px;
+        }
+        
+        .gold-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+            background: linear-gradient(90deg, var(--gold), var(--light-gold));
+        }
+        
+        .platform-description {
+            margin-top: 30px;
+            color: var(--light-gray);
+            font-size: 1.15rem;
+            line-height: 1.7;
+            padding: 25px;
+            background: rgba(10, 10, 10, 0.7);
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            display: none;
+            text-align: left;
+            font-weight: 300;
+            transition: all 0.5s;
+        }
+        
+        .light-mode .platform-description {
+            background: rgba(255, 255, 255, 0.7);
+        }
+        
+        .platform-description strong {
+            color: var(--gold);
+            font-weight: 500;
+        }
+        
+        /* Redes sociais */
+        .social-section {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+            position: relative;
+            transition: all 0.5s;
+        }
+        
+        .social-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+        }
+        
+        .company-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+        }
+        
+        .social-tagline {
+            font-size: 1.2rem;
+            color: var(--light-gray);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--dark-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.8rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .light-mode .social-icon {
+            background: #E0E0E0;
+        }
+        
+        .social-icon:hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+        }
+        
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            margin-top: 40px;
+            transition: all 0.5s;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        /* Animações */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-delay {
+            animation: float 6s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .profiles {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .profile-card {
+                max-width: 90%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
+            
+            .container {
+                padding: 150px 15px 60px;
+            }
+            
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .mission {
+                padding: 20px;
+                font-size: 1rem;
+            }
+            
+            .company-name {
+                font-size: 2.8rem;
+            }
+            
+            .social-icons {
+                gap: 20px;
+            }
+            
+            .social-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
+            }
+            
+            .theme-toggle {
+                width: 45px;
+                height: 45px;
+                top: 15px;
+                right: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            .profile-name {
+                font-size: 1.9rem;
+            }
+            
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .interactive-title {
+                font-size: 1.5rem;
+            }
+            
+            .company-name {
+                font-size: 2.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Botão de alternar tema -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+    <!-- Navegação -->
+    <nav>
+        <a href="#" class="logo">GamePlan</a>
+        <div class="nav-links">
+            <a href="../Html/main.html">Página Principal</a>
+            <a href="../Html/treinos.html">Treinos</a>
+            <a href="../Html/formacoes.html">Formações</a>
+            <a href="../Html/contactos.html">Contactos</a>
+            <a>.</a>
+        </div>
+    </nav>
+    
+    <!-- Conteúdo Principal -->
+    <div class="container">
+        <!-- Cabeçalho -->
+        <header class="header">
+            <h1>Dois Programadores,<br>Uma Visão</h1>
+            <p class="tagline">Estudantes de 18 anos na EPBJC Porto, unidos pela paixão pelo futebol e tecnologia.</p>
+            
+            <div class="mission">
+                <p>Na GamePlan, não prevemos o futuro – revelamos os padrões que o moldam. Analisamos e comparamos as táticas dos treinadores das 6 grandes ligas europeias, transformando dados complexos em conhecimento estratégico claro e acessível.</p>
+            </div>
+        </header>
+        
+        <!-- Cards de Perfil -->
+        <div class="profiles">
+            <!-- Pedro Garcia -->
+            <div class="profile-card floating">
+                <div class="profile-header">
+                    <h2 class="profile-name">Pedro Garcia</h2>
+                    <p class="profile-role">Programador & Analista de Dados</p>
+                </div>
+                <div class="profile-content">
+                    <p class="profile-desc">Especialista em transformar milhões de dados de jogos em insights claros. Foco em identificar padrões táticos e criar comparações visuais entre as abordagens dos principais treinadores europeus.</p>
+                    <p class="profile-quote">"Os números contam a história real do jogo. Minha missão é traduzi-la."</p>
+                </div>
+            </div>
+            
+            <!-- Cristiano Ferreira -->
+            <div class="profile-card floating-delay">
+                <div class="profile-header">
+                    <h2 class="profile-name">Cristiano Ferreira</h2>
+                    <p class="profile-role">Programador & Designer de Interfaces</p>
+                </div>
+                <div class="profile-content">
+                    <p class="profile-desc">Responsável por tornar a análise tática visual e intuitiva. Desenha sistemas que permitem explorar e comparar formações, movimentos e decisões de maneira única e envolvente.</p>
+                    <p class="profile-quote">"Uma boa visualização pode revelar o que mil palavras escondem."</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Elemento Interativo -->
+        <div class="interactive-element" id="plataforma">
+            <h3 class="interactive-title">Como funciona a nossa plataforma?</h3>
+            <p style="color: var(--light-gray); margin-bottom: 25px; font-size: 1.1rem;">Clique para descobrir a nossa abordagem única.</p>
+            <button class="gold-btn" id="platformBtn">Revelar Metodologia</button>
+            
+            <div class="platform-description" id="platformDescription">
+                <p>Na <strong>GamePlan</strong>, construímos uma biblioteca tática digital das <strong>6 principais ligas europeias</strong> (Premier League, La Liga, Bundesliga, Serie A, Ligue 1 e Liga Portuguesa).</p>
+                
+                <p style="margin-top: 15px;">A nossa plataforma oferece:</p>
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    <li style="margin-bottom: 8px;"><strong>Análise comparativa:</strong> Compare as táticas de Guardiola, Klopp, Ancelotti e outros em detalhe.</li>
+                    <li style="margin-bottom: 8px;"><strong>Evolução tática:</strong> Veja como as abordagens mudam ao longo da temporada.</li>
+                    <li style="margin-bottom: 8px;"><strong>Dados contextuais:</strong> Estatísticas de posse, pressão, transições e criação de chances.</li>
+                    <li><strong>Visualizações interativas:</strong> Diagramas de formação, mapas de calor e padrões de passe.</li>
+                </ul>
+                
+                <p style="margin-top: 20px; font-style: italic; color: var(--light-gold);">Não prevemos o futuro. Damos-lhe o conhecimento para o construir.</p>
+            </div>
+        </div>
+        
+    <!-- Redes Sociais -->
+    <div class="social-section">
+    <h2 class="company-name">GamePlan</h2>
+    <p class="social-tagline">A análise tática do futebol moderno, desconstruída e acessível.</p>
+    
+    <div class="social-icons">
+        <a href="https://www.instagram.com/gameplanfootball1?igsh=OXY3eW13NnRqcGhi" class="social-icon" title="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gameplanfootball1@gmail.com" target="_blank" class="social-icon" title="Enviar Email">
+            <i class="fas fa-envelope"></i>
+        </a>
+    </div>
+    </div>
+        
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 GamePlan. Todos os direitos reservados.</p>
+        <p>EPBJC Porto • Dois programadores a revolucionar a análise tática do futebol</p>
+    </footer>
+
+    <script>
+        // Sistema de Modo Claro/Escuro
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            
+            if (document.body.classList.contains('light-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('gameplan-theme', 'light');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('gameplan-theme', 'dark');
+            }
+        });
+        
+        // Verificar preferência salva
+        const savedTheme = localStorage.getItem('gameplan-theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        // Elemento interativo da plataforma
+        const platformBtn = document.getElementById('platformBtn');
+        const platformDescription = document.getElementById('platformDescription');
+        
+        platformBtn.addEventListener('click', function() {
+            if (platformDescription.style.display === 'none' || platformDescription.style.display === '') {
+                // Mostrar a descrição
+                platformDescription.style.display = 'block';
+                platformBtn.textContent = 'Metodologia Revelada ✓';
+                
+                // Efeito visual no botão
+                platformBtn.style.background = 'linear-gradient(90deg, var(--dark-gray), var(--medium-gray))';
+                platformBtn.style.color = 'var(--gold)';
+                platformBtn.style.border = '1px solid var(--gold)';
+                
+                // Rolar suavemente até a descrição
+                platformDescription.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Reverter o botão após 3 segundos
+                setTimeout(() => {
+                    platformBtn.textContent = 'Metodologia Revelada';
+                }, 3000);
+            } else {
+                // Esconder a descrição
+                platformDescription.style.display = 'none';
+                platformBtn.textContent = 'Revelar Metodologia';
+                platformBtn.style.background = 'linear-gradient(90deg, var(--dark-gold), var(--gold))';
+                platformBtn.style.color = 'var(--black)';
+                platformBtn.style.border = 'none';
+            }
+        });
+        
+        // Efeito de digitação no cabeçalho
+        const missionText = document.querySelector('.mission p');
+        const originalMissionText = missionText.textContent;
+        missionText.textContent = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < originalMissionText.length) {
+                missionText.textContent += originalMissionText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 20);
+            }
+        }
+        
+        // Inicia a animação após um breve delay
+        setTimeout(typeWriter, 800);
+        
+        // Efeito de brilho aleatório nos cards
+        const cards = document.querySelectorAll('.profile-card');
+        
+        setInterval(() => {
+            cards.forEach(card => {
+                if (Math.random() > 0.7) {
+                    card.style.boxShadow = '0 20px 50px rgba(212, 175, 55, 0.3)';
+                    card.style.borderColor = 'rgba(212, 175, 55, 0.5)';
+                    
+                    setTimeout(() => {
+                        card.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.5)';
+                        if (document.body.classList.contains('light-mode')) {
+                            card.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.1)';
+                        }
+                        card.style.borderColor = 'rgba(212, 175, 55, 0.15)';
+                    }, 1000);
+                }
+            });
+        }, 4000);
+        
+        // Navegação suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

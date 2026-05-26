@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>FC Alverca</title>
+    <style>
+        body {
+            background-color: #115599;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: #FF0000;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color: #FF0000;
+        }
+
+        .header .logo-placeholder {
+            width: 100%;
+            height: 1px;
+        }
+
+        hr.black-separator {
+            border: none;
+            height: 6px;
+            background-color:#FF0000;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color:#FF0000;
+            padding: 20px;
+            border-radius: 10px;
+            color:white;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid #FF0000;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.black-separator {
+                grid-column: 1;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>FC Alverca</h1>
+        <hr class="black-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/alverca.png" alt="Logo Wolverhampton Wanderers">
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador: <a href="https://www.zerozero.pt/treinador/custodio-castro/28097" target="_blank"> Custódio Castro</a></strong></p>
+            
+            <p class="texto-justificado">Custódio Castro, é um antigo futebolista português que se notabilizou como médio-defensivo e que atualmente segue a carreira de treinador de futebol. A sua história desportiva divide-se entre uma carreira sólida como jogador e uma transição para a liderança técnica, marcada por passagens em clubes importantes de Portugal. </p>
+
+            <img src="../png/custodio-castro.png" alt="Treinador">
+
+            <p><strong>Estádio: Complexo Desportivo FC Alverca </strong></p>
+            <p class="texto-justificado">O Alverca disputa os seus jogos no Complexo Desportivo FC Alverca, um estádio moderno e funcional.Situado em Alverca do Ribatejo, é um espaço que tem crescido em estrutura e ambição, acompanhando a evolução do clube nos últimos anos.</p>
+
+            <img src="../png/complexo-desportivo-alverca.png" alt="Molineux Stadium">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">No FC Alverca, Custódio Castro implementou um estilo de jogo focado na competitividade, agressividade e na luta pelos três pontos em todos os jogos.</p>
+
+            <p>"Voa Alverca!"</p>
+        </div>
+    </div>
+
+</body>
+</html>

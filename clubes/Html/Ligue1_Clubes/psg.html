@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <title>PSG</title>
+    <style>
+        body {
+            background-color: #030392;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color:#DA0812;
+            margin: 0;
+        }
+
+        .header {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+            text-align: center; 
+            color:white;
+        }
+
+        .header .logo-placeholder {
+
+            width: 100%;
+            height: 1px;
+        }
+
+        .hr .white-separator {
+            border: none;
+            height: 6px;
+            background-color: white;
+            margin: 10px 0 40px 0;
+            max-width: 300px;
+            border-radius: 3px;
+            justify-self: center;
+            grid-column: 2;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .image-container img,
+        .logo-left {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .image-container {
+            flex: 0 0 250px;
+        }
+
+        .text-container {
+            flex: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color:#DA0812;
+            padding: 20px;
+            border-radius: 10px;
+            color:white;
+            text-align: center;
+        }
+
+        .text-container img {
+            width: 60%;
+            border-radius: 10px;
+            border: 4px solid #DA0812;
+            margin-top: 10px;
+        }
+
+        .texto-justificado {
+         text-align: justify;
+        }
+
+        /* Responsividade simples */
+        @media (max-width: 700px) {
+            .header, .container {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+            }
+            hr.white-separator {
+                grid-column: 2;
+            }
+            .image-container {
+                flex: 0 0 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-placeholder"></div>
+        <h1>PSG</h1>
+        <hr class="white-separator" />
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img class="logo-left" src="../png/Paris Saint-Germain.png">
+        </div>
+
+        <div class="text-container">
+            <p><strong>Treinador: <a href="https://www.zerozero.pt/treinador/luis-enrique/1337?search=1" target="_blank">Luis Enrique</a></strong></p>
+            <p class="texto-justificado">A história de Luis Enrique é uma saga notável de paixão, rivalidade intensa e um génio tático que transcendeu a sua carreira de jogador para se afirmar como um dos treinadores mais bem-sucedidos da sua geração.</p>
+
+            <img src="../png/luis_enrique.png" alt="Treinador">
+
+            <p><strong>Estádio: Parc des Princes</strong></p>
+            <p class="texto-justificado">A história do Parc des Princes é uma das mais ricas do desporto mundial, sendo um monumento à arquitetura moderna e o coração pulsante do futebol na capital francesa.
+            </p>
+
+            <img src="../png/parc_des_princes.jpg" alt="Estadio">
+
+            <p><strong>Estilo de Jogo:</strong></p>
+            <p class="texto-justificado">O estilo de jogo que Luis Enrique utiliza no Paris Saint-Germain é uma versão evoluída da filosofia "tiki-taka" do Barcelona, focada na posse de bola absoluta, na iniciativa constante e na pressão alta intensa. </p>
+
+            <p>"Rêver Plus Grand!"</p>
+        </div>
+    </div>
+
+</body>
+</html>

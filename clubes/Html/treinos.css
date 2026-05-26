@@ -1,0 +1,159 @@
+/* Configurações Gerais - Mantendo o seu padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Verdana', sans-serif;
+}
+
+body {
+    background-color: #060607; 
+    color: #000000;
+    line-height: 1.6;
+}
+
+/* Header Estilo "Hero" adaptado ao seu design */
+header.hero {
+    background: linear-gradient(135deg, #1e2022, #1e2022);
+    color: white;
+    text-align: center;
+    border-radius: 0 0 15px 15px; /* Arredondado apenas em baixo */
+    box-shadow: 0 4px 15px #DBC078;
+    margin-bottom: 50px;
+    overflow: hidden;
+    padding-bottom: 40px; 
+}
+
+header nav {
+    background:#DBC078; 
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #DBC078;
+}
+
+.hero-text h1 {
+    font-size: 2.6rem;
+    margin: 40px 0 10px 0;
+    color: white;
+}
+
+.hero-text p {
+    color: #DBC078;
+    font-size: 1.1rem;
+}
+
+/* Grid de Treinos - Baseado no seu .news-section / .features */
+.treinos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Card de Treino - Baseado no seu .news-item e .feature-card */
+.card {
+    background-color: #DBC078; /* O Bege/Dourado do seu tema */
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 3px 10px #DBC078;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(219, 192, 120, 0.4);
+}
+
+/* Imagens dos Treinos */
+.card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #1e2022;
+}
+
+.card h2 {
+    color: #1e2022;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #1e2022;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.card h3 {
+    color: #1e2022;
+    font-size: 1.1rem;
+    margin-top: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.card p {
+    color: #1e2022;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+/* Lista de Músculos - Ícone de bola de futebol */
+.musculos {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.musculos li {
+    color: #1e2022;
+    font-weight: 500;
+    padding: 4px 0;
+}
+
+.musculos li::before {
+    content: "⚽ ";
+    font-size: 0.8rem;
+}
+
+/* Footer - Igual ao seu modelo */
+footer {
+    text-align: center;
+    background-color: #DBC078;
+    padding: 25px;
+    margin-top: 50px;
+    box-shadow: 0 -3px 10px rgba(219, 192, 120, 0.3);
+    border-radius: 15px 15px 0 0;
+    color: #141414;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    header nav {
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+    
+    .treinos {
+        grid-template-columns: 1fr;
+    }
+}
